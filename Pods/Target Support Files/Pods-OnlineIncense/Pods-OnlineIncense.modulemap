@@ -1,0 +1,6 @@
+framework module Pods_OnlineIncense {
+  umbrella header "Pods-OnlineIncense-umbrella.h"
+
+  export *
+  module * { export * }
+}
