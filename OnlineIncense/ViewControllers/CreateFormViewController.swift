@@ -32,6 +32,8 @@ class CreateFormViewController: UIViewController {
     private let addressTextField = CommonTextField(text: "住所")
     private let scheduleTextField = CommonTextField(text: "日程")
     private let createButton = ActionButton(text: "芳名録を作成する")
+    private let scrollView = UIScrollView()
+    private let spaceView = CommonTitleLabel(label: "")
     
     private let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
     private let prefectures = ["北海道", "青森県", "岩手県", "宮城県", "秋田県",
@@ -55,6 +57,7 @@ class CreateFormViewController: UIViewController {
     
     private func setupLayout() {
         
+        spaceView.backgroundColor = .clear
         // 決定バーの生成
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
         let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -82,28 +85,28 @@ class CreateFormViewController: UIViewController {
             $0.distribution = .fillEqually
         }
         
-        let baseStackView = UIStackView(arrangedSubviews: stackViews)
+        let baseStackView = UIStackView(arrangedSubviews: [deceasedStackView, deceasedHiraganaStackView, homelessStackView, prefectureStackView ,placeStackView, addressStackView, scheduleStackView, spaceView, createButton])
         baseStackView.axis = .vertical
-        baseStackView.distribution = .fillEqually
         baseStackView.spacing = 10
         
-//        let scrollView = UIScrollView()
-//        scrollView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
-//        scrollView.contentSize = CGSize(width: screenSize.width, height: screenSize.height)
-//        view.addSubview(scrollView)
-//        scrollView.anchor(left: view.leftAnchor, right: view.rightAnchor, centerY: view.centerYAnchor)
+        scrollView.frame = self.view.frame
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 2000)
+        view.addSubview(scrollView)
+        scrollView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
         
-        view.addSubview(baseStackView)
-        view.addSubview(createButton)
-        deceasedNameLabel.anchor(height: 50)
+        scrollView.addSubview(baseStackView)
+        
+        deceasedNameLabel.anchor(width: screenSize.width - 50, height: 50)
         deceasedHiraganaLabel.anchor(height: 50)
         prefectureLabel.anchor(height: 50)
         homelessLabel.anchor(height: 50)
         placeLabel.anchor(height: 50)
         addressLabel.anchor(height: 50)
         scheduleLabel.anchor(height: 50)
-        baseStackView.anchor(left: view.leftAnchor, right: view.rightAnchor, centerY: view.centerYAnchor, leftPadding: 25, rightPadding: 25)
-        createButton.anchor(top: baseStackView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 50, topPadding: 30, leftPadding: 25, rightPadding: 25)
+        createButton.anchor(height: 50)
+        spaceView.anchor(height: 5)
+        
+        baseStackView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: scrollView.rightAnchor, leftPadding: 25, rightPadding: 25)
         
         createButton.setTitleColor(.black, for: .disabled)
     }
