@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class DetailViewController: UIViewController {
 
@@ -21,12 +23,13 @@ class DetailViewController: UIViewController {
     let scheduleDiscriptionLabel = DetailDiscriptionLabel(label: "")
     private let rejectionDiscription = RejectionDiscription()
     private let writeButton = ActionButton(text: "芳名録を記入する")
-    
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupLayout()
+        setupBindings()
     }
     
     private func setupLayout() {
@@ -52,5 +55,17 @@ class DetailViewController: UIViewController {
         baseStackView.anchor(top: view.topAnchor ,left: view.leftAnchor, right: view.rightAnchor, topPadding: 120, leftPadding: 25, rightPadding: 25)
         rejectionDiscription.anchor(top: baseStackView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: 20, leftPadding: 25, rightPadding: 25)
         writeButton.anchor(top: rejectionDiscription.bottomAnchor, centerX: view.centerXAnchor, width: view.bounds.width - 50, height: 50 ,topPadding: 20)
+    }
+    
+    private func setupBindings() {
+        
+        writeButton.rx.tap
+            .asDriver()
+            .drive() { _ in
+                let writingVC = WritingFormViewController()
+                self.navigationController?.pushViewController(writingVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
     }
 }

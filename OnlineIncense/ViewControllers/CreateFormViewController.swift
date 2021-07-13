@@ -71,6 +71,11 @@ class CreateFormViewController: UIViewController {
         prefecturePickerView.delegate = self
         prefecturePickerView.dataSource = self
         
+        let textFields = [deceasedNameTextField, deceasedHiraganaTextField, homelessTextField, prefectureTextField, placeTextField, addressTextField, scheduleTextField]
+        textFields.forEach {
+            $0.delegate = self
+        }
+        
         let deceasedStackView = UIStackView(arrangedSubviews: [deceasedNameLabel, deceasedNameTextField])
         let deceasedHiraganaStackView = UIStackView(arrangedSubviews: [deceasedHiraganaLabel, deceasedHiraganaTextField])
         let homelessStackView = UIStackView(arrangedSubviews: [homelessLabel, homelessTextField])

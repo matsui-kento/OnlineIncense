@@ -42,6 +42,7 @@
 		0E263F46269C0F2A005BE8FE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F45269C0F2A005BE8FE /* String+Extension.swift */; };
 		0E263F48269C1151005BE8FE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F47269C1151005BE8FE /* LoginViewModel.swift */; };
 		0E263F4A269C28F2005BE8FE /* CreateFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F49269C28F2005BE8FE /* CreateFormViewModel.swift */; };
+		0E263F50269DA593005BE8FE /* WritingFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F4F269DA593005BE8FE /* WritingFormViewController.swift */; };
 		D9590958B1682C296F8294CC /* Pods_OnlineIncense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		0E263F45269C0F2A005BE8FE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		0E263F47269C1151005BE8FE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0E263F49269C28F2005BE8FE /* CreateFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormViewModel.swift; sourceTree = "<group>"; };
+		0E263F4F269DA593005BE8FE /* WritingFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFormViewController.swift; sourceTree = "<group>"; };
 		2859B6519EA8E319B326791C /* Pods-OnlineIncense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineIncense.release.xcconfig"; path = "Target Support Files/Pods-OnlineIncense/Pods-OnlineIncense.release.xcconfig"; sourceTree = "<group>"; };
 		8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlineIncense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,8 +143,9 @@
 			isa = PBXGroup;
 			children = (
 				0E263EE02699B2C0005BE8FE /* MainTabViewController.swift */,
-				0E263F192699F18A005BE8FE /* DetailViewController.swift */,
 				0E263EF02699B327005BE8FE /* SearchViewController.swift */,
+				0E263F192699F18A005BE8FE /* DetailViewController.swift */,
+				0E263F4F269DA593005BE8FE /* WritingFormViewController.swift */,
 				0E263EF22699B33B005BE8FE /* CreateViewController.swift */,
 				0E263F2E269ABA8E005BE8FE /* CreateFormViewController.swift */,
 				0E263EF42699B346005BE8FE /* MyPageViewController.swift */,
@@ -414,6 +417,7 @@
 				0E263F36269AF72E005BE8FE /* Firebase+Extension.swift in Sources */,
 				0E263F1A2699F18A005BE8FE /* DetailViewController.swift in Sources */,
 				0E263F4A269C28F2005BE8FE /* CreateFormViewModel.swift in Sources */,
+				0E263F50269DA593005BE8FE /* WritingFormViewController.swift in Sources */,
 				0E263F1C269A8D86005BE8FE /* SearchTableViewCell.swift in Sources */,
 				0E263F162699F157005BE8FE /* CreateDiscriptionLabel.swift in Sources */,
 				0E263F1F269A93BD005BE8FE /* CommonTitleLabel.swift in Sources */,
