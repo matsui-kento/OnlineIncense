@@ -144,6 +144,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
+        detailVC.deceasedDiscriptionLabel.text = infoArray[indexPath.row].deceasedName
+        detailVC.homelessDiscriptionLabel.text = infoArray[indexPath.row].homeless
+        detailVC.placeDiscriptionLabel.text = infoArray[indexPath.row].place
+        detailVC.addressDiscriptionLabel.text = infoArray[indexPath.row].address
+        detailVC.scheduleDiscriptionLabel.text = infoArray[indexPath.row].schedule
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
