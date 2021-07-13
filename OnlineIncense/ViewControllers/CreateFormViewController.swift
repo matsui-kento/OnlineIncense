@@ -189,6 +189,7 @@ class CreateFormViewController: UIViewController {
         if deceasedNameTextField.text != "" &&
             deceasedHiraganaTextField.text != "" &&
             homelessTextField.text != "" &&
+            prefectureTextField.text != "" &&
             placeTextField.text != "" &&
             addressTextField.text != "" &&
             scheduleTextField.text != "" {
@@ -196,6 +197,7 @@ class CreateFormViewController: UIViewController {
             Firestore.setInfoWithoutIncense(deceasedName: deceasedNameTextField.text!,
                                             deceasedHiragana: deceasedHiraganaTextField.text!,
                                             homeless: homelessTextField.text!,
+                                            prefecture: prefectureTextField.text!,
                                             place: placeTextField.text!,
                                             address: addressTextField.text!,
                                             schedule: scheduleTextField.text!) { success in

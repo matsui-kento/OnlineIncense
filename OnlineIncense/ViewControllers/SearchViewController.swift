@@ -6,31 +6,38 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import PKHUD
+import Firebase
 
 class SearchViewController: UIViewController {
     
+    private let disposeBag = DisposeBag()
     private let prefecturePickerView = PrefecturePickerView()
     private let nameTextField = CommonTextField(text: "故人(ひらがな)")
     private let prefectureTextField = CommonTextField(text: "都道府県")
     private let searchButton = ActionButton(text: "検索")
     private let searchTextLabel = SearchTextLabel()
     private let searchTableView = UITableView()
+    var infoArray = [Info]()
     
     private let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
     private let prefectures = ["北海道", "青森県", "岩手県", "宮城県", "秋田県",
-                       "山形県", "福島県", "茨城県", "栃木県", "群馬県",
-                       "埼玉県", "千葉県", "東京都", "神奈川県","新潟県",
-                       "富山県", "石川県", "福井県", "山梨県", "長野県",
-                       "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県",
-                       "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県",
-                       "鳥取県", "島根県", "岡山県", "広島県", "山口県",
-                       "徳島県", "香川県", "愛媛県", "高知県", "福岡県",
-                       "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県",
-                       "鹿児島県", "沖縄県"]
+                               "山形県", "福島県", "茨城県", "栃木県", "群馬県",
+                               "埼玉県", "千葉県", "東京都", "神奈川県","新潟県",
+                               "富山県", "石川県", "福井県", "山梨県", "長野県",
+                               "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県",
+                               "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県",
+                               "鳥取県", "島根県", "岡山県", "広島県", "山口県",
+                               "徳島県", "香川県", "愛媛県", "高知県", "福岡県",
+                               "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県",
+                               "鹿児島県", "沖縄県"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        setupBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +83,41 @@ class SearchViewController: UIViewController {
         
     }
     
+    private func setupBindings() {
+        
+        searchButton.rx.tap
+            .asDriver()
+            .drive() { _ in
+                self.searchInfo()
+            }
+            .disposed(by: disposeBag)
+        
+    }
+    
+    private func searchInfo() {
+        
+        guard let name = nameTextField.text else { return }
+        guard let prefecture = prefectureTextField.text else { return }
+        HUD.show(.progress)
+        if (name != "") && (prefecture != "") {
+            print("OK1")
+            HUD.hide()
+            Firestore.fetchInfoForSeach(name: name, prefecture: prefecture) { infoArray in
+                if infoArray == nil {
+                    print("OK2")
+                    HUD.flash(.labeledError(title: "エラーが起こりました。", subtitle: "開発者に連絡してください。"), delay: 1)
+                } else {
+                    print("OK3")
+                    self.infoArray = infoArray ?? [Info]()
+                    self.searchTableView.reloadData()
+                }
+            }
+        } else {
+            HUD.flash(.labeledError(title: "名前と都道府県を入力してください。", subtitle: ""), delay: 1)
+        }
+        
+    }
+    
     @objc func done() {
         prefectureTextField.endEditing(true)
         prefectureTextField.text = "\(prefectures[prefecturePickerView.selectedRow(inComponent: 0)])"
@@ -90,16 +132,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ sampleTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return infoArray.count
     }
     
     func tableView(_ sampleTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = searchTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = searchTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchTableViewCell
+        cell.nameLabel.text = infoArray[indexPath.row].deceasedName
+        cell.placeLabel.text = infoArray[indexPath.row].place
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)番セルが押されたよ！")
         let detailVC = DetailViewController()
         self.navigationController?.pushViewController(detailVC, animated: true)
     }

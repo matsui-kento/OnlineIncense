@@ -66,7 +66,7 @@ extension Firestore {
         }
     }
     
-    static func setInfoWithoutIncense(deceasedName: String, deceasedHiragana: String, homeless: String, place: String, address: String, schedule: String, completion: @escaping (Bool) -> ()) {
+    static func setInfoWithoutIncense(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, completion: @escaping (Bool) -> ()) {
         
         print("extensionまで来た")
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -74,6 +74,7 @@ extension Firestore {
         let data: [String:Any] = ["deceasedName": deceasedName,
                                   "deceasedHiragana": deceasedHiragana,
                                   "homeless": homeless,
+                                  "prefecture": prefecture,
                                   "place": place,
                                   "address": address,
                                   "schedule": schedule,
@@ -89,6 +90,29 @@ extension Firestore {
             print("Firestoreへの情報の保存が成功しました。")
             completion(true)
         }
+    }
+    
+    static func fetchInfoForSeach(name: String, prefecture: String, completion: @escaping ([Info]?) -> ()) {
+        
+        let docRef = Firestore.firestore().collection("Infos")
+        docRef.getDocuments { snapshot, error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+                return
+            }
+            
+            var infoArray = snapshot?.documents.map({ snapshot -> Info in
+                let data = snapshot.data()
+                let info = Info(dic: data)
+                return info
+            })
+            
+            infoArray = infoArray?.filter { ($0.deceasedHiragana == name) && ($0.prefecture == prefecture) }
+            completion(infoArray ?? [Info]())
+            
+        }
+        
     }
     
 }

@@ -12,7 +12,7 @@ class SearchTableViewCell: UITableViewCell {
     
     let nameLabel: UILabel = {
         var label = UILabel()
-        label.text = "故人: 松井建登"
+        label.text = ""
         label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
@@ -20,7 +20,7 @@ class SearchTableViewCell: UITableViewCell {
     
     let placeLabel: UILabel = {
         var label = UILabel()
-        label.text = "泉北郡忠岡町"
+        label.text = ""
         label.textColor = .black
         label.font = .systemFont(ofSize: 15, weight: .bold)
         return label
