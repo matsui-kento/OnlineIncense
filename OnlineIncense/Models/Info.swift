@@ -12,6 +12,7 @@ struct Info {
     let deceasedName: String
     let deceasedHiragana: String
     let homeless: String
+    let prefecture: String
     let place: String
     let address: String
     let schedule: String
@@ -21,6 +22,7 @@ struct Info {
         self.deceasedName = dic["deceasedName"] as? String ?? ""
         self.deceasedHiragana = dic["deceasedHiragana"] as? String ?? ""
         self.homeless = dic["homeless"] as? String ?? ""
+        self.prefecture = dic["prefecture"] as? String ?? ""
         self.place = dic["place"] as? String ?? ""
         self.address = dic["address"] as? String ?? ""
         self.schedule = dic["schedule"] as? String ?? ""
