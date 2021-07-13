@@ -14,11 +14,11 @@ class DetailViewController: UIViewController {
     private let placeLabel = CommonTitleLabel(label: "式場")
     private let addressLabel = CommonTitleLabel(label: "住所")
     private let scheduleLabel = CommonTitleLabel(label: "日程")
-    private let deceasedDiscriptionLabel = DetailDiscriptionLabel(label: "松井建登")
-    private let homelessDiscriptionLabel = DetailDiscriptionLabel(label: "松井家")
-    private let placeDiscriptionLabel = DetailDiscriptionLabel(label: "忠岡斎場")
-    private let addressDiscriptionLabel = DetailDiscriptionLabel(label: "大阪府泉北郡忠岡町忠岡南2-17-33")
-    private let scheduleDiscriptionLabel = DetailDiscriptionLabel(label: "7/13 19時")
+    let deceasedDiscriptionLabel = DetailDiscriptionLabel(label: "")
+    let homelessDiscriptionLabel = DetailDiscriptionLabel(label: "")
+    let placeDiscriptionLabel = DetailDiscriptionLabel(label: "")
+    let addressDiscriptionLabel = DetailDiscriptionLabel(label: "")
+    let scheduleDiscriptionLabel = DetailDiscriptionLabel(label: "")
     private let rejectionDiscription = RejectionDiscription()
     private let writeButton = ActionButton(text: "芳名録を記入する")
     
@@ -53,5 +53,4 @@ class DetailViewController: UIViewController {
         rejectionDiscription.anchor(top: baseStackView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: 20, leftPadding: 25, rightPadding: 25)
         writeButton.anchor(top: rejectionDiscription.bottomAnchor, centerX: view.centerXAnchor, width: view.bounds.width - 50, height: 50 ,topPadding: 20)
     }
-
 }
