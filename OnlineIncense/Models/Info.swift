@@ -17,6 +17,7 @@ struct Info {
     let address: String
     let schedule: String
     let uid: String
+    let documentID: String
     
     init(dic: [String:Any]) {
         self.deceasedName = dic["deceasedName"] as? String ?? ""
@@ -27,5 +28,6 @@ struct Info {
         self.address = dic["address"] as? String ?? ""
         self.schedule = dic["schedule"] as? String ?? ""
         self.uid = dic["uid"] as? String ?? ""
+        self.documentID = dic["documentID"] as? String ?? ""
     }
 }

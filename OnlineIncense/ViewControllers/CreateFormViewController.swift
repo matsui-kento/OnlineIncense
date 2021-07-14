@@ -151,14 +151,6 @@ class CreateFormViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        placeTextField.rx.text
-            .asDriver()
-            .drive() { _ in
-                if self.view.frame.origin.y != 0 {
-                    self.view.frame.origin.y = 0
-                }
-            }
-        
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

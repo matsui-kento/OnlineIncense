@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
     let placeDiscriptionLabel = DetailDiscriptionLabel(label: "")
     let addressDiscriptionLabel = DetailDiscriptionLabel(label: "")
     let scheduleDiscriptionLabel = DetailDiscriptionLabel(label: "")
+    var documentID = ""
     private let rejectionDiscription = RejectionDiscription()
     private let writeButton = ActionButton(text: "芳名録を記入する")
     private let disposeBag = DisposeBag()
@@ -63,6 +64,7 @@ class DetailViewController: UIViewController {
             .asDriver()
             .drive() { _ in
                 let writingVC = WritingFormViewController()
+                writingVC.documentID = self.documentID
                 self.navigationController?.pushViewController(writingVC, animated: true)
             }
             .disposed(by: disposeBag)

@@ -43,6 +43,8 @@
 		0E263F48269C1151005BE8FE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F47269C1151005BE8FE /* LoginViewModel.swift */; };
 		0E263F4A269C28F2005BE8FE /* CreateFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F49269C28F2005BE8FE /* CreateFormViewModel.swift */; };
 		0E263F50269DA593005BE8FE /* WritingFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F4F269DA593005BE8FE /* WritingFormViewController.swift */; };
+		0E6145E7269E7BC80026255F /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145E6269E7BC80026255F /* Participant.swift */; };
+		0E6145E9269E7D720026255F /* WritingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145E8269E7D720026255F /* WritingFormViewModel.swift */; };
 		D9590958B1682C296F8294CC /* Pods_OnlineIncense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +88,8 @@
 		0E263F47269C1151005BE8FE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0E263F49269C28F2005BE8FE /* CreateFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormViewModel.swift; sourceTree = "<group>"; };
 		0E263F4F269DA593005BE8FE /* WritingFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFormViewController.swift; sourceTree = "<group>"; };
+		0E6145E6269E7BC80026255F /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
+		0E6145E8269E7D720026255F /* WritingFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFormViewModel.swift; sourceTree = "<group>"; };
 		2859B6519EA8E319B326791C /* Pods-OnlineIncense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineIncense.release.xcconfig"; path = "Target Support Files/Pods-OnlineIncense/Pods-OnlineIncense.release.xcconfig"; sourceTree = "<group>"; };
 		8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlineIncense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -254,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				0E263F38269B15D1005BE8FE /* Info.swift */,
+				0E6145E6269E7BC80026255F /* Participant.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				0E263F43269C0EFB005BE8FE /* RegisterViewModel.swift */,
 				0E263F47269C1151005BE8FE /* LoginViewModel.swift */,
 				0E263F49269C28F2005BE8FE /* CreateFormViewModel.swift */,
+				0E6145E8269E7D720026255F /* WritingFormViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 				0E263F48269C1151005BE8FE /* LoginViewModel.swift in Sources */,
 				0E263F0A2699BEFE005BE8FE /* PrefecturePickerView.swift in Sources */,
 				0E263EFE2699B41B005BE8FE /* UIImage+Extension.swift in Sources */,
+				0E6145E9269E7D720026255F /* WritingFormViewModel.swift in Sources */,
 				0E263EF92699B36C005BE8FE /* RegisterViewController.swift in Sources */,
 				0E263EE12699B2C0005BE8FE /* MainTabViewController.swift in Sources */,
 				0E263EDD2699B2C0005BE8FE /* AppDelegate.swift in Sources */,
@@ -429,6 +436,7 @@
 				0E263F082699BBA0005BE8FE /* CommonTextField.swift in Sources */,
 				0E263F44269C0EFB005BE8FE /* RegisterViewModel.swift in Sources */,
 				0E263F34269ABB75005BE8FE /* CreateTextField.swift in Sources */,
+				0E6145E7269E7BC80026255F /* Participant.swift in Sources */,
 				0E263F39269B15D1005BE8FE /* Info.swift in Sources */,
 				0E263F46269C0F2A005BE8FE /* String+Extension.swift in Sources */,
 				0E263F0E2699C867005BE8FE /* SearchTextLabel.swift in Sources */,
