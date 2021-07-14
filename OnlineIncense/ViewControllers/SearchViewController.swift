@@ -100,14 +100,11 @@ class SearchViewController: UIViewController {
         guard let prefecture = prefectureTextField.text else { return }
         HUD.show(.progress)
         if (name != "") && (prefecture != "") {
-            print("OK1")
-            HUD.hide()
             Firestore.fetchInfoForSeach(name: name, prefecture: prefecture) { infoArray in
+                HUD.hide()
                 if infoArray == nil {
-                    print("OK2")
                     HUD.flash(.labeledError(title: "エラーが起こりました。", subtitle: "開発者に連絡してください。"), delay: 1)
                 } else {
-                    print("OK3")
                     self.infoArray = infoArray ?? [Info]()
                     self.searchTableView.reloadData()
                 }
@@ -149,6 +146,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         detailVC.placeDiscriptionLabel.text = infoArray[indexPath.row].place
         detailVC.addressDiscriptionLabel.text = infoArray[indexPath.row].address
         detailVC.scheduleDiscriptionLabel.text = infoArray[indexPath.row].schedule
+        detailVC.documentID = infoArray[indexPath.row].documentID
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

@@ -9,14 +9,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 import PKHUD
+import Firebase
 
 class WritingFormViewController: UIViewController {
 
-    private let nameLabel = CommonTitleLabel(label: "御芳名(代表者)")
-    private let addressLabel = CommonTitleLabel(label: "住所")
-    private let numberLabel = CommonTitleLabel(label: "電話")
+    private let nameLabel = CommonTitleLabel(label: "御芳名(代表者) *必須")
+    private let addressLabel = CommonTitleLabel(label: "住所 *必須")
+    private let numberLabel = CommonTitleLabel(label: "電話 *必須")
     private let companyLabel = CommonTitleLabel(label: "会社名/団体名(任意)")
-    private let relationLabel = CommonTitleLabel(label: "ご関係")
+    private let relationLabel = CommonTitleLabel(label: "ご関係(友人/会社/親戚など) *必須")
     
     private let nameTextField = CommonTextField(text: "御芳名(代表者)")
     private let addressTextField = CommonTextField(text: "住所")
@@ -29,8 +30,9 @@ class WritingFormViewController: UIViewController {
     private let scrollView = UIScrollView()
     
     private let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-    private let viewModel = CreateFormViewModel()
+    private let viewModel = WritingFormViewModel()
     private let disposeBag = DisposeBag()
+    var documentID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,12 +91,52 @@ class WritingFormViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        nameTextField.rx.text
+            .bind(to: viewModel.nameSubject)
+            .disposed(by: disposeBag)
+        addressTextField.rx.text
+            .bind(to: viewModel.addressSubject)
+            .disposed(by: disposeBag)
+        numberTextField.rx.text
+            .bind(to: viewModel.numberSubject)
+            .disposed(by: disposeBag)
+        relationTextField.rx.text
+            .bind(to: viewModel.relationSubject)
+            .disposed(by: disposeBag)
+        viewModel.isValidForm
+            .bind(to: doneButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
         doneButton.rx.tap
             .asDriver()
             .drive() { _ in
-                
+                self.sendInfo()
             }
             .disposed(by: disposeBag)
+        
+    }
+    
+    private func sendInfo() {
+        
+        HUD.show(.progress)
+        if nameTextField.text != "" &&
+            addressTextField.text != "" &&
+            numberTextField.text != "" &&
+            relationTextField.text != "" {
+                Firestore.setParticipant(name: nameTextField.text!,
+                                         address: addressTextField.text!,
+                                         number: numberTextField.text!,
+                                         company: companyTextField.text ?? "個人",
+                                         relation: relationTextField.text!,
+                                         documentID: documentID) { success in
+                    if success {
+                        HUD.flash(.success)
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        HUD.flash(.labeledError(title: "芳名録の記入に失敗しました", subtitle: "任意以外のところを全て記入しているか確認してください。"), delay: 3)
+                    }
+                }
+            }
         
     }
     

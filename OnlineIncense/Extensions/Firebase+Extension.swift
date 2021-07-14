@@ -78,7 +78,8 @@ extension Firestore {
                                   "place": place,
                                   "address": address,
                                   "schedule": schedule,
-                                  "uid": uid]
+                                  "uid": uid,
+                                  "documentID": docRef.documentID]
         
         docRef.setData(data) { error in
             if error != nil {
@@ -90,6 +91,26 @@ extension Firestore {
             print("Firestoreへの情報の保存が成功しました。")
             completion(true)
         }
+    }
+    
+    static func setParticipant(name: String, address: String, number: String, company: String, relation: String, documentID: String, completion: @escaping (Bool) -> ()) {
+        
+        let docRef = Firestore.firestore().collection("Infos").document(documentID).collection("Participants").document()
+        let data: [String: Any] = ["name": name,
+                                   "address": address,
+                                   "number": number,
+                                   "company": company,
+                                   "relation": relation]
+        docRef.setData(data) { error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(false)
+                return
+            }
+            print("Firestoreへの保存が成功しました。")
+            completion(true)
+        }
+        
     }
     
     static func fetchInfoForSeach(name: String, prefecture: String, completion: @escaping ([Info]?) -> ()) {
@@ -112,7 +133,5 @@ extension Firestore {
             completion(infoArray ?? [Info]())
             
         }
-        
     }
-    
 }
