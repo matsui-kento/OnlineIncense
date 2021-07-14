@@ -45,7 +45,7 @@ class CreateViewController: UIViewController {
         createButtonWithIncense.rx.tap
             .asDriver()
             .drive() { _ in
-                let createFormVC = CreateFormViewController()
+                let createFormVC = CreateFormWithIncenseViewController()
                 self.navigationController?.pushViewController(createFormVC, animated: true)
             }
             .disposed(by: disposeBag)
