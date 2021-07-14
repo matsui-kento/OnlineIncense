@@ -34,16 +34,18 @@ class MyPageViewController: UIViewController {
     private func setupLayout() {
         
         if let uid = Auth.auth().currentUser?.uid {
+            self.loginButton.isHidden = true
+            self.logoutButton.isHidden = false
+            self.lookButton.isHidden = false
             Firestore.fetchUser(uid: uid) { user in
                 self.user = user
                 self.nameLabel.text = user?.name
-                self.loginButton.isHidden = true
-                self.logoutButton.isHidden = false
             }
         } else {
-            self.nameLabel.text = "ログインしていません"
             self.loginButton.isHidden = false
             self.logoutButton.isHidden = true
+            self.lookButton.isHidden = true
+            self.nameLabel.text = "ログインしていません"
         }
         
         let baseStackView = UIStackView(arrangedSubviews: [nameLabel, lookButton, privacyButton, logoutButton, loginButton])
@@ -81,7 +83,8 @@ class MyPageViewController: UIViewController {
         lookButton.rx.tap
             .asDriver()
             .drive() { _ in
-                
+                let createdListVC = CreatedListViewController()
+                self.navigationController?.pushViewController(createdListVC, animated: true)
             }
             .disposed(by: disposeBag)
         
