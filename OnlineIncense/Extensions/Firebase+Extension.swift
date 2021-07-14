@@ -171,4 +171,24 @@ extension Firestore {
             completion(user)
         }
     }
+    
+    static func fetchParticipant(documentID: String, completion: @escaping ([Participant]?) -> ()) {
+        
+        let docRef = Firestore.firestore().collection("Infos").document(documentID).collection("Participants")
+        docRef.getDocuments { snapshot, error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+                return
+            }
+            
+            let participantArray = snapshot?.documents.map({ snapshot -> Participant in
+                let data = snapshot.data()
+                let participant = Participant(dic: data)
+                return participant
+            })
+            
+            completion(participantArray)
+        }
+    }
 }
