@@ -8,7 +8,7 @@
 import Firebase
 import FirebaseAuth
 import FirebaseStorage
-//import FirebaseFirestore
+import FirebaseFirestore
 
 extension Auth {
     
@@ -112,7 +112,6 @@ extension Firestore {
             print("Firestoreへの保存が成功しました。")
             completion(true)
         }
-        
     }
     
     static func fetchInfoForSeach(name: String, prefecture: String, completion: @escaping ([Info]?) -> ()) {
@@ -133,7 +132,6 @@ extension Firestore {
             
             infoArray = infoArray?.filter { ($0.deceasedHiragana == name) && ($0.prefecture == prefecture) }
             completion(infoArray ?? [Info]())
-            
         }
     }
     
@@ -172,8 +170,5 @@ extension Firestore {
             let user = User(dic: data!)
             completion(user)
         }
-        
-        
-        
     }
 }
