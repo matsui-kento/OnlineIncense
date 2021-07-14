@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
     }
     
     private func setupLayout() {
-
+        
         let deceasedStackView = UIStackView(arrangedSubviews: [deceasedNameLabel, deceasedDiscriptionLabel])
         let homelessStackView = UIStackView(arrangedSubviews: [homelessLabel, homelessDiscriptionLabel])
         let placeStackView = UIStackView(arrangedSubviews: [placeLabel, placeDiscriptionLabel])
