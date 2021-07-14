@@ -70,7 +70,15 @@ extension ParticipantListViewController: UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = ParticipantDetailViewController()
+        detailVC.nameDiscriptionLabel.text = participantArray[indexPath.row].name
+        detailVC.addressDiscriptionLabel.text = participantArray[indexPath.row].address
+        detailVC.numberDiscriptionLabel.text = participantArray[indexPath.row].number
+        detailVC.companyDiscriptionLabel.text = participantArray[indexPath.row].company
+        detailVC.relationDiscriptionLabel.text = participantArray[indexPath.row].relation
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
     
     
 }
