@@ -49,6 +49,7 @@
 		0E6145ED269E99880026255F /* CreatedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145EC269E99880026255F /* CreatedListViewController.swift */; };
 		0E6145EF269EA1F40026255F /* ParticipantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145EE269EA1F40026255F /* ParticipantListViewController.swift */; };
 		0E6145F1269ED8A70026255F /* ParticipantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145F0269ED8A70026255F /* ParticipantDetailViewController.swift */; };
+		0E6145F3269EDF2C0026255F /* CreateFormWithIncenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145F2269EDF2C0026255F /* CreateFormWithIncenseViewController.swift */; };
 		D9590958B1682C296F8294CC /* Pods_OnlineIncense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,7 @@
 		0E6145EC269E99880026255F /* CreatedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedListViewController.swift; sourceTree = "<group>"; };
 		0E6145EE269EA1F40026255F /* ParticipantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantListViewController.swift; sourceTree = "<group>"; };
 		0E6145F0269ED8A70026255F /* ParticipantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantDetailViewController.swift; sourceTree = "<group>"; };
+		0E6145F2269EDF2C0026255F /* CreateFormWithIncenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormWithIncenseViewController.swift; sourceTree = "<group>"; };
 		2859B6519EA8E319B326791C /* Pods-OnlineIncense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineIncense.release.xcconfig"; path = "Target Support Files/Pods-OnlineIncense/Pods-OnlineIncense.release.xcconfig"; sourceTree = "<group>"; };
 		8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlineIncense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 				0E263F4F269DA593005BE8FE /* WritingFormViewController.swift */,
 				0E263EF22699B33B005BE8FE /* CreateViewController.swift */,
 				0E263F2E269ABA8E005BE8FE /* CreateFormViewController.swift */,
+				0E6145F2269EDF2C0026255F /* CreateFormWithIncenseViewController.swift */,
 				0E263EF42699B346005BE8FE /* MyPageViewController.swift */,
 				0E6145EC269E99880026255F /* CreatedListViewController.swift */,
 				0E6145EE269EA1F40026255F /* ParticipantListViewController.swift */,
@@ -419,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E263F27269AA0A1005BE8FE /* RejectionDiscription.swift in Sources */,
+				0E6145F3269EDF2C0026255F /* CreateFormWithIncenseViewController.swift in Sources */,
 				0E263F41269BFBCE005BE8FE /* AuthTextButton.swift in Sources */,
 				0E263EF72699B350005BE8FE /* LoginViewController.swift in Sources */,
 				0E263EF32699B33B005BE8FE /* CreateViewController.swift in Sources */,
