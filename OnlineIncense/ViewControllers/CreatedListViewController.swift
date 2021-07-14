@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import PKHUD
 
 class CreatedListViewController: UIViewController {
 
@@ -26,8 +27,13 @@ class CreatedListViewController: UIViewController {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Firestore.fetchInfoForMyPage(uid: uid) { infoArray in
-            self.infoArray = infoArray ?? [Info]()
-            self.createdTableView.reloadData()
+            
+            if infoArray != nil {
+                self.infoArray = infoArray ?? [Info]()
+                self.createdTableView.reloadData()
+            } else {
+                HUD.flash(.labeledError(title: "エラーが発生しました。", subtitle: "もう一度やり直してください。\nもし何度やり直してもできない場合は開発者に連絡してください。"))
+            }
         }
         
         createdTableView.delegate = self
@@ -65,9 +71,11 @@ extension CreatedListViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let participantVC = ParticipantListViewController()
+        participantVC.documentID = infoArray[indexPath.row].documentID
+        self.navigationController?.pushViewController(participantVC, animated: true)
+    }
     
     
 }
