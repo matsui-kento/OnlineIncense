@@ -52,9 +52,11 @@ extension Firestore {
     
     static func setUser(name: String, email: String, uid: String, completion: @escaping (Bool) -> ()) {
         
-        let dictionary: [String:Any] = ["name": name, "email": email, "uid" : uid]
+        let data: [String:Any] = ["name": name,
+                                        "email": email,
+                                        "uid" : uid]
         let docRef = Firestore.firestore().collection("Users").document(uid)
-        docRef.setData(dictionary) { error in
+        docRef.setData(data) { error in
             if let error = error {
                 print("新規ユーザー情報の保存に失敗しました。")
                 print(error.localizedDescription)
@@ -133,5 +135,45 @@ extension Firestore {
             completion(infoArray ?? [Info]())
             
         }
+    }
+    
+    static func fetchInfoForMyPage(uid: String, completion: @escaping ([Info]?) -> ()) {
+        
+        let docRef = Firestore.firestore().collection("Infos")
+        docRef.getDocuments { snapshot, error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+                return
+            }
+            
+            var infoArray = snapshot?.documents.map({ snapshot -> Info in
+                let data = snapshot.data()
+                let info = Info(dic: data)
+                return info
+            })
+            
+            infoArray = infoArray?.filter { ($0.uid == uid) }
+            completion(infoArray ?? [Info]())
+        }
+    }
+    
+    static func fetchUser(uid: String, completion: @escaping (User?) -> ()) {
+        
+        let docRef = Firestore.firestore().collection("Users").document(uid)
+        docRef.getDocument { snapshot, error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+                return
+            }
+            
+            let data = snapshot?.data()
+            let user = User(dic: data!)
+            completion(user)
+        }
+        
+        
+        
     }
 }
