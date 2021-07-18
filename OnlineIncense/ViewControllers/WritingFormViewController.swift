@@ -32,7 +32,10 @@ class WritingFormViewController: UIViewController {
     private let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
     private let viewModel = WritingFormViewModel()
     private let disposeBag = DisposeBag()
+    var info: Info?
     var documentID = ""
+    var participantID = ""
+    var insence = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,16 +131,28 @@ class WritingFormViewController: UIViewController {
                                          number: numberTextField.text!,
                                          company: companyTextField.text ?? "個人",
                                          relation: relationTextField.text!,
-                                         documentID: documentID) { success in
-                    if success {
+                                         documentID: documentID) { participantID in
+                    if participantID != "" {
+                        self.participantID = participantID
                         HUD.flash(.success)
-                        self.navigationController?.popViewController(animated: true)
+                        self.insenceOrNot()
                     } else {
-                        HUD.flash(.labeledError(title: "芳名録の記入に失敗しました", subtitle: "任意以外のところを全て記入しているか確認してください。"), delay: 3)
+                        HUD.flash(.labeledError(title: "芳名録の記入に失敗しました", subtitle: "必須項目を全て記入しているか確認してください。"), delay: 3)
                     }
                 }
             }
-        
+    }
+    
+    private func insenceOrNot() {
+        if insence {
+            let insenceFormVC = IncenseFormViewController()
+            insenceFormVC.info = info
+            insenceFormVC.infoID = documentID
+            insenceFormVC.participantID = participantID
+            self.navigationController?.pushViewController(insenceFormVC, animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

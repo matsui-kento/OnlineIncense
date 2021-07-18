@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CurlDSL",
+        "repositoryURL": "https://github.com/zonble/CurlDSL",
+        "state": {
+          "branch": null,
+          "revision": "9a91a25dc3ca9496fe92680d2ea787adf5a50319",
+          "version": "0.0.5"
+        }
+      },
+      {
+        "package": "OmiseSDK",
+        "repositoryURL": "https://github.com/omise/omise-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "8424ec139680527b36f0c4c7cfc357984608b27a",
+          "version": "4.4.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

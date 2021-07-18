@@ -15,5 +15,7 @@ pod 'SDWebImage'
 pod 'PKHUD'
 pod 'RxSwift'
 pod 'RxCocoa'
+pod 'SwiftyJSON'
+pod 'Alamofire'
 
 end

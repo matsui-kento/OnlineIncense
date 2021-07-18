@@ -22,6 +22,8 @@ class DetailViewController: UIViewController {
     let addressDiscriptionLabel = DetailDiscriptionLabel(label: "")
     let scheduleDiscriptionLabel = DetailDiscriptionLabel(label: "")
     var documentID = ""
+    var info: Info?
+    var incense = false
     private let rejectionDiscription = RejectionDiscription()
     private let writeButton = ActionButton(text: "芳名録を記入する")
     private let disposeBag = DisposeBag()
@@ -34,6 +36,10 @@ class DetailViewController: UIViewController {
     }
     
     private func setupLayout() {
+        
+        if incense {
+            rejectionDiscription.text = "芳名録を記入後、香典の手続きがございます。"
+        }
         
         let deceasedStackView = UIStackView(arrangedSubviews: [deceasedNameLabel, deceasedDiscriptionLabel])
         let homelessStackView = UIStackView(arrangedSubviews: [homelessLabel, homelessDiscriptionLabel])
@@ -65,6 +71,8 @@ class DetailViewController: UIViewController {
             .drive() { _ in
                 let writingVC = WritingFormViewController()
                 writingVC.documentID = self.documentID
+                writingVC.insence = self.incense
+                writingVC.info = self.info
                 self.navigationController?.pushViewController(writingVC, animated: true)
             }
             .disposed(by: disposeBag)

@@ -197,7 +197,8 @@ class CreateFormWithIncenseViewController: UIViewController {
                                             prefecture: prefectureTextField.text!,
                                             place: placeTextField.text!,
                                             address: addressTextField.text!,
-                                            schedule: scheduleTextField.text!) { success in
+                                            schedule: scheduleTextField.text!,
+                                            incense: true) { success in
                 HUD.hide()
                 if success {
                     HUD.flash(.success, delay: 1)

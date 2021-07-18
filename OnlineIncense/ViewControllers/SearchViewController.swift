@@ -147,6 +147,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         detailVC.addressDiscriptionLabel.text = infoArray[indexPath.row].address
         detailVC.scheduleDiscriptionLabel.text = infoArray[indexPath.row].schedule
         detailVC.documentID = infoArray[indexPath.row].documentID
+        detailVC.incense = infoArray[indexPath.row].incense
+        detailVC.info = infoArray[indexPath.row]
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
