@@ -22,6 +22,11 @@ class ParticipantListViewController: UIViewController {
         setupBindings()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "参列者一覧"
+    }
+    
     private func setupLayout() {
         
         view.backgroundColor = .white

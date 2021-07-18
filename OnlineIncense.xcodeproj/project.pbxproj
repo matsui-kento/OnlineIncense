@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -50,8 +50,28 @@
 		0E6145EF269EA1F40026255F /* ParticipantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145EE269EA1F40026255F /* ParticipantListViewController.swift */; };
 		0E6145F1269ED8A70026255F /* ParticipantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145F0269ED8A70026255F /* ParticipantDetailViewController.swift */; };
 		0E6145F3269EDF2C0026255F /* CreateFormWithIncenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145F2269EDF2C0026255F /* CreateFormWithIncenseViewController.swift */; };
+		0E6145F6269F0B460026255F /* OmiseSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 0E6145F5269F0B460026255F /* OmiseSDK */; };
+		0E6145F7269F0B460026255F /* OmiseSDK in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0E6145F5269F0B460026255F /* OmiseSDK */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		0E6145FA269F0BC30026255F /* IncenseFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145F9269F0BC30026255F /* IncenseFormViewController.swift */; };
+		0E6145FC26A13CCE0026255F /* UInavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145FB26A13CCE0026255F /* UInavigationController.swift */; };
+		0E61460226A2754C0026255F /* CurlDSL in Frameworks */ = {isa = PBXBuildFile; productRef = 0E61460126A2754C0026255F /* CurlDSL */; };
+		0E61460526A3D9980026255F /* ErrorDiscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61460426A3D9980026255F /* ErrorDiscription.swift */; };
 		D9590958B1682C296F8294CC /* Pods_OnlineIncense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0E6145F8269F0B460026255F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0E6145F7269F0B460026255F /* OmiseSDK in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		09D0EFD79900EB6AD8A3E756 /* Pods-OnlineIncense.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineIncense.debug.xcconfig"; path = "Target Support Files/Pods-OnlineIncense/Pods-OnlineIncense.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +120,9 @@
 		0E6145EE269EA1F40026255F /* ParticipantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantListViewController.swift; sourceTree = "<group>"; };
 		0E6145F0269ED8A70026255F /* ParticipantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantDetailViewController.swift; sourceTree = "<group>"; };
 		0E6145F2269EDF2C0026255F /* CreateFormWithIncenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormWithIncenseViewController.swift; sourceTree = "<group>"; };
+		0E6145F9269F0BC30026255F /* IncenseFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncenseFormViewController.swift; sourceTree = "<group>"; };
+		0E6145FB26A13CCE0026255F /* UInavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInavigationController.swift; sourceTree = "<group>"; };
+		0E61460426A3D9980026255F /* ErrorDiscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDiscription.swift; sourceTree = "<group>"; };
 		2859B6519EA8E319B326791C /* Pods-OnlineIncense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineIncense.release.xcconfig"; path = "Target Support Files/Pods-OnlineIncense/Pods-OnlineIncense.release.xcconfig"; sourceTree = "<group>"; };
 		8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlineIncense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -109,7 +132,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E61460226A2754C0026255F /* CurlDSL in Frameworks */,
 				D9590958B1682C296F8294CC /* Pods_OnlineIncense.framework in Frameworks */,
+				0E6145F6269F0B460026255F /* OmiseSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +185,7 @@
 				0E263EF02699B327005BE8FE /* SearchViewController.swift */,
 				0E263F192699F18A005BE8FE /* DetailViewController.swift */,
 				0E263F4F269DA593005BE8FE /* WritingFormViewController.swift */,
+				0E6145F9269F0BC30026255F /* IncenseFormViewController.swift */,
 				0E263EF22699B33B005BE8FE /* CreateViewController.swift */,
 				0E263F2E269ABA8E005BE8FE /* CreateFormViewController.swift */,
 				0E6145F2269EDF2C0026255F /* CreateFormWithIncenseViewController.swift */,
@@ -180,6 +206,7 @@
 				0E263EFF2699B42A005BE8FE /* UIView+Extension.swift */,
 				0E263F35269AF72E005BE8FE /* Firebase+Extension.swift */,
 				0E263F45269C0F2A005BE8FE /* String+Extension.swift */,
+				0E6145FB26A13CCE0026255F /* UInavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -187,6 +214,7 @@
 		0E263EFC2699B3EC005BE8FE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0E61460326A3D44A0026255F /* Incense */,
 				0E263F2A269AAF25005BE8FE /* Common */,
 				0E263F1D269A93A3005BE8FE /* Detail */,
 				0E263F062699BB68005BE8FE /* Register */,
@@ -289,6 +317,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		0E61460326A3D44A0026255F /* Incense */ = {
+			isa = PBXGroup;
+			children = (
+				0E61460426A3D9980026255F /* ErrorDiscription.swift */,
+			);
+			path = Incense;
+			sourceTree = "<group>";
+		};
 		48F3A1CFF9ABEBBAFA7BD3AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,12 +354,17 @@
 				0E263ED62699B2C0005BE8FE /* Frameworks */,
 				0E263ED72699B2C0005BE8FE /* Resources */,
 				87AA42FDD5CA61C9958BB107 /* [CP] Embed Pods Frameworks */,
+				0E6145F8269F0B460026255F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = OnlineIncense;
+			packageProductDependencies = (
+				0E6145F5269F0B460026255F /* OmiseSDK */,
+				0E61460126A2754C0026255F /* CurlDSL */,
+			);
 			productName = OnlineIncense;
 			productReference = 0E263ED92699B2C0005BE8FE /* OnlineIncense.app */;
 			productType = "com.apple.product-type.application";
@@ -351,6 +392,10 @@
 				Base,
 			);
 			mainGroup = 0E263ED02699B2C0005BE8FE;
+			packageReferences = (
+				0E6145F4269F0B460026255F /* XCRemoteSwiftPackageReference "omise-ios" */,
+				0E61460026A2754C0026255F /* XCRemoteSwiftPackageReference "CurlDSL" */,
+			);
 			productRefGroup = 0E263EDA2699B2C0005BE8FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -433,6 +478,7 @@
 				0E263F48269C1151005BE8FE /* LoginViewModel.swift in Sources */,
 				0E6145ED269E99880026255F /* CreatedListViewController.swift in Sources */,
 				0E263F0A2699BEFE005BE8FE /* PrefecturePickerView.swift in Sources */,
+				0E6145FC26A13CCE0026255F /* UInavigationController.swift in Sources */,
 				0E263EFE2699B41B005BE8FE /* UIImage+Extension.swift in Sources */,
 				0E6145EF269EA1F40026255F /* ParticipantListViewController.swift in Sources */,
 				0E6145E9269E7D720026255F /* WritingFormViewModel.swift in Sources */,
@@ -455,7 +501,9 @@
 				0E263F3D269BF5BD005BE8FE /* AuthTextField.swift in Sources */,
 				0E263F082699BBA0005BE8FE /* CommonTextField.swift in Sources */,
 				0E263F44269C0EFB005BE8FE /* RegisterViewModel.swift in Sources */,
+				0E6145FA269F0BC30026255F /* IncenseFormViewController.swift in Sources */,
 				0E263F34269ABB75005BE8FE /* CreateTextField.swift in Sources */,
+				0E61460526A3D9980026255F /* ErrorDiscription.swift in Sources */,
 				0E6145E7269E7BC80026255F /* Participant.swift in Sources */,
 				0E263F39269B15D1005BE8FE /* Info.swift in Sources */,
 				0E263F46269C0F2A005BE8FE /* String+Extension.swift in Sources */,
@@ -663,6 +711,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0E6145F4269F0B460026255F /* XCRemoteSwiftPackageReference "omise-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/omise/omise-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.0;
+			};
+		};
+		0E61460026A2754C0026255F /* XCRemoteSwiftPackageReference "CurlDSL" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zonble/CurlDSL";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0E6145F5269F0B460026255F /* OmiseSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E6145F4269F0B460026255F /* XCRemoteSwiftPackageReference "omise-ios" */;
+			productName = OmiseSDK;
+		};
+		0E61460126A2754C0026255F /* CurlDSL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E61460026A2754C0026255F /* XCRemoteSwiftPackageReference "CurlDSL" */;
+			productName = CurlDSL;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0E263ED12699B2C0005BE8FE /* Project object */;
 }

@@ -68,7 +68,7 @@ extension Firestore {
         }
     }
     
-    static func setInfoWithoutIncense(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, completion: @escaping (Bool) -> ()) {
+    static func setInfoWithoutIncense(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, incense: Bool, completion: @escaping (Bool) -> ()) {
         
         print("extensionまで来た")
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -81,7 +81,8 @@ extension Firestore {
                                   "address": address,
                                   "schedule": schedule,
                                   "uid": uid,
-                                  "documentID": docRef.documentID]
+                                  "documentID": docRef.documentID,
+                                  "incense": incense]
         
         docRef.setData(data) { error in
             if error != nil {
@@ -95,9 +96,10 @@ extension Firestore {
         }
     }
     
-    static func setParticipant(name: String, address: String, number: String, company: String, relation: String, documentID: String, completion: @escaping (Bool) -> ()) {
+    static func setParticipant(name: String, address: String, number: String, company: String, relation: String, documentID: String, completion: @escaping (String) -> ()) {
         
         let docRef = Firestore.firestore().collection("Infos").document(documentID).collection("Participants").document()
+        let documentID = docRef.documentID
         let data: [String: Any] = ["name": name,
                                    "address": address,
                                    "number": number,
@@ -106,11 +108,55 @@ extension Firestore {
         docRef.setData(data) { error in
             if error != nil {
                 print(error.debugDescription)
-                completion(false)
+                completion("")
                 return
             }
             print("Firestoreへの保存が成功しました。")
+            completion(documentID)
+        }
+    }
+    
+    static func updateIncenseForParticipant(incense: String, infoID: String, participantID: String, completion: @escaping (Bool) -> ()) {
+        
+        let docRef = Firestore.firestore().collection("Infos").document(infoID).collection("Participants").document(participantID)
+        var incenseString: String
+        if incense == "0" {
+            incenseString = "香典なし"
+        } else {
+            incenseString = "\(incense)円"
+        }
+        docRef.setData(["incense": incenseString], merge: true) { error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(false)
+                return
+            }
+            
+            print("香典の保存に成功しました。")
             completion(true)
+        }
+    }
+    
+    static func updateIncenseForInfo(infoID: String, newIncensePrice: Int) {
+        
+        let docRef = Firestore.firestore().collection("Infos").document(infoID)
+        docRef.getDocument { snapshot, error in
+            if error != nil {
+                print(error.debugDescription)
+                return
+            }
+            
+            let data = snapshot?.data()
+            let info = Info(dic: data!)
+            var incensePrice = info.incensePrice
+            incensePrice += newIncensePrice
+            
+            docRef.setData(["incensePrice": incensePrice], merge: true) { error in
+                if error != nil {
+                    print(error.debugDescription)
+                    return
+                }
+            }
         }
     }
     

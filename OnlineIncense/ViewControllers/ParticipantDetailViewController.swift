@@ -26,6 +26,11 @@ class ParticipantDetailViewController: UIViewController {
         setupLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "参列者の詳細"
+    }
+    
     private func setupLayout() {
         view.backgroundColor = .white
         

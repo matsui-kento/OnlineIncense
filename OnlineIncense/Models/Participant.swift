@@ -14,6 +14,7 @@ struct Participant {
     let number: String
     let company: String
     let relation: String
+    let incense: String
     
     init(dic: [String:Any]) {
         self.name = dic["name"] as? String ?? ""
@@ -21,5 +22,6 @@ struct Participant {
         self.number = dic["number"] as? String ?? ""
         self.company = dic["company"] as? String ?? ""
         self.relation = dic["relation"] as? String ?? ""
+        self.incense = dic["incense"] as? String ?? "0"
     }
 }

@@ -18,6 +18,8 @@ struct Info {
     let schedule: String
     let uid: String
     let documentID: String
+    let incensePrice: Int
+    let incense: Bool
     
     init(dic: [String:Any]) {
         self.deceasedName = dic["deceasedName"] as? String ?? ""
@@ -29,5 +31,7 @@ struct Info {
         self.schedule = dic["schedule"] as? String ?? ""
         self.uid = dic["uid"] as? String ?? ""
         self.documentID = dic["documentID"] as? String ?? ""
+        self.incense = dic["incense"] as? Bool ?? false
+        self.incensePrice = dic["incensePrice"] as? Int ?? 0
     }
 }

@@ -197,7 +197,8 @@ class CreateFormViewController: UIViewController {
                                             prefecture: prefectureTextField.text!,
                                             place: placeTextField.text!,
                                             address: addressTextField.text!,
-                                            schedule: scheduleTextField.text!) { success in
+                                            schedule: scheduleTextField.text!,
+                                            incense: false) { success in
                 HUD.hide()
                 if success {
                     HUD.flash(.success, delay: 1)
