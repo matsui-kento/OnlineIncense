@@ -11,8 +11,8 @@ class CreateTitleLabel: UILabel {
     
     init() {
         super.init(frame: .zero)
-        text = "オンラインで香典を受け取りますか？"
-        font = .systemFont(ofSize: 25, weight: .bold)
+        text = "オンライン香典"
+        font = .systemFont(ofSize: 30, weight: .bold)
         numberOfLines = 0
     }
     

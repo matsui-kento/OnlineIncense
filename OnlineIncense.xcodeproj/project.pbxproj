@@ -32,7 +32,6 @@
 		0E263F23269A97F9005BE8FE /* DetailDiscriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F22269A97F9005BE8FE /* DetailDiscriptionLabel.swift */; };
 		0E263F27269AA0A1005BE8FE /* RejectionDiscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F26269AA0A1005BE8FE /* RejectionDiscription.swift */; };
 		0E263F2F269ABA8E005BE8FE /* CreateFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F2E269ABA8E005BE8FE /* CreateFormViewController.swift */; };
-		0E263F34269ABB75005BE8FE /* CreateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F33269ABB75005BE8FE /* CreateTextField.swift */; };
 		0E263F36269AF72E005BE8FE /* Firebase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F35269AF72E005BE8FE /* Firebase+Extension.swift */; };
 		0E263F39269B15D1005BE8FE /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F38269B15D1005BE8FE /* Info.swift */; };
 		0E263F3B269B3D1F005BE8FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E263F3A269B3D1F005BE8FE /* GoogleService-Info.plist */; };
@@ -58,6 +57,8 @@
 		0E61460526A3D9980026255F /* ErrorDiscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61460426A3D9980026255F /* ErrorDiscription.swift */; };
 		0E61460726A424710026255F /* SearchParticipantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61460626A424710026255F /* SearchParticipantViewController.swift */; };
 		0E61460926A463ED0026255F /* FuncListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61460826A463ED0026255F /* FuncListViewController.swift */; };
+		0E61460B26A5272F0026255F /* CreateTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61460A26A5272F0026255F /* CreateTextView.swift */; };
+		0E61460D26A52EB50026255F /* DetailTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61460C26A52EB50026255F /* DetailTextView.swift */; };
 		D9590958B1682C296F8294CC /* Pods_OnlineIncense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,7 +105,6 @@
 		0E263F22269A97F9005BE8FE /* DetailDiscriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiscriptionLabel.swift; sourceTree = "<group>"; };
 		0E263F26269AA0A1005BE8FE /* RejectionDiscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectionDiscription.swift; sourceTree = "<group>"; };
 		0E263F2E269ABA8E005BE8FE /* CreateFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormViewController.swift; sourceTree = "<group>"; };
-		0E263F33269ABB75005BE8FE /* CreateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTextField.swift; sourceTree = "<group>"; };
 		0E263F35269AF72E005BE8FE /* Firebase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Extension.swift"; sourceTree = "<group>"; };
 		0E263F38269B15D1005BE8FE /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		0E263F3A269B3D1F005BE8FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -127,6 +127,8 @@
 		0E61460426A3D9980026255F /* ErrorDiscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDiscription.swift; sourceTree = "<group>"; };
 		0E61460626A424710026255F /* SearchParticipantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParticipantViewController.swift; sourceTree = "<group>"; };
 		0E61460826A463ED0026255F /* FuncListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuncListViewController.swift; sourceTree = "<group>"; };
+		0E61460A26A5272F0026255F /* CreateTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTextView.swift; sourceTree = "<group>"; };
+		0E61460C26A52EB50026255F /* DetailTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextView.swift; sourceTree = "<group>"; };
 		2859B6519EA8E319B326791C /* Pods-OnlineIncense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineIncense.release.xcconfig"; path = "Target Support Files/Pods-OnlineIncense/Pods-OnlineIncense.release.xcconfig"; sourceTree = "<group>"; };
 		8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlineIncense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				0E263F22269A97F9005BE8FE /* DetailDiscriptionLabel.swift */,
+				0E61460C26A52EB50026255F /* DetailTextView.swift */,
 				0E263F26269AA0A1005BE8FE /* RejectionDiscription.swift */,
 			);
 			path = Detail;
@@ -297,7 +300,7 @@
 		0E263F30269ABB04005BE8FE /* CreateForm */ = {
 			isa = PBXGroup;
 			children = (
-				0E263F33269ABB75005BE8FE /* CreateTextField.swift */,
+				0E61460A26A5272F0026255F /* CreateTextView.swift */,
 			);
 			path = CreateForm;
 			sourceTree = "<group>";
@@ -492,6 +495,8 @@
 				0E6145EB269E8ED70026255F /* User.swift in Sources */,
 				0E263EE12699B2C0005BE8FE /* MainTabViewController.swift in Sources */,
 				0E263EDD2699B2C0005BE8FE /* AppDelegate.swift in Sources */,
+				0E61460D26A52EB50026255F /* DetailTextView.swift in Sources */,
+				0E61460B26A5272F0026255F /* CreateTextView.swift in Sources */,
 				0E263F36269AF72E005BE8FE /* Firebase+Extension.swift in Sources */,
 				0E263F1A2699F18A005BE8FE /* DetailViewController.swift in Sources */,
 				0E263F4A269C28F2005BE8FE /* CreateFormViewModel.swift in Sources */,
@@ -508,7 +513,6 @@
 				0E263F082699BBA0005BE8FE /* CommonTextField.swift in Sources */,
 				0E263F44269C0EFB005BE8FE /* RegisterViewModel.swift in Sources */,
 				0E6145FA269F0BC30026255F /* IncenseFormViewController.swift in Sources */,
-				0E263F34269ABB75005BE8FE /* CreateTextField.swift in Sources */,
 				0E61460526A3D9980026255F /* ErrorDiscription.swift in Sources */,
 				0E61460926A463ED0026255F /* FuncListViewController.swift in Sources */,
 				0E6145E7269E7BC80026255F /* Participant.swift in Sources */,

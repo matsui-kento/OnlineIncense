@@ -23,29 +23,32 @@ class CreateFormViewController: UIViewController {
     private let prefectureLabel = CommonTitleLabel(label: "出身地(都道府県のみ)")
     private let placeLabel = CommonTitleLabel(label: "式場")
     private let addressLabel = CommonTitleLabel(label: "式場住所")
-    private let scheduleLabel = CommonTitleLabel(label: "日程")
+    private let scheduleLabel = CommonTitleLabel(label: "お通夜の日程")
+    private let otherLabel = CommonTitleLabel(label: "その他(任意)")
     private let deceasedNameTextField = CommonTextField(text: "故人")
     private let deceasedHiraganaTextField = CommonTextField(text: "故人(ひらがな)")
     private let homelessTextField = CommonTextField(text: "喪家")
     private let prefectureTextField = CommonTextField(text: "出身地(都道府県のみ)")
     private let placeTextField = CommonTextField(text: "式場")
     private let addressTextField = CommonTextField(text: "住所")
-    private let scheduleTextField = CommonTextField(text: "日程")
+    private let scheduleTextField = CommonTextField(text: "お通夜の日程")
+    private let otherTextView = CreateTextView()
     private let createButton = ActionButton(text: "芳名録を作成する")
     private let scrollView = UIScrollView()
     private let spaceView = CommonTitleLabel(label: "")
+    var incese = false
     
     private let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
     private let prefectures = ["北海道", "青森県", "岩手県", "宮城県", "秋田県",
-                       "山形県", "福島県", "茨城県", "栃木県", "群馬県",
-                       "埼玉県", "千葉県", "東京都", "神奈川県","新潟県",
-                       "富山県", "石川県", "福井県", "山梨県", "長野県",
-                       "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県",
-                       "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県",
-                       "鳥取県", "島根県", "岡山県", "広島県", "山口県",
-                       "徳島県", "香川県", "愛媛県", "高知県", "福岡県",
-                       "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県",
-                       "鹿児島県", "沖縄県"]
+                               "山形県", "福島県", "茨城県", "栃木県", "群馬県",
+                               "埼玉県", "千葉県", "東京都", "神奈川県","新潟県",
+                               "富山県", "石川県", "福井県", "山梨県", "長野県",
+                               "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県",
+                               "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県",
+                               "鳥取県", "島根県", "岡山県", "広島県", "山口県",
+                               "徳島県", "香川県", "愛媛県", "高知県", "福岡県",
+                               "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県",
+                               "鹿児島県", "沖縄県"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,14 +86,15 @@ class CreateFormViewController: UIViewController {
         let placeStackView = UIStackView(arrangedSubviews: [placeLabel, placeTextField])
         let addressStackView = UIStackView(arrangedSubviews: [addressLabel, addressTextField])
         let scheduleStackView = UIStackView(arrangedSubviews: [scheduleLabel, scheduleTextField])
-        let stackViews = [deceasedStackView, deceasedHiraganaStackView, homelessStackView, prefectureStackView ,placeStackView, addressStackView, scheduleStackView]
+        let otherStackView = UIStackView(arrangedSubviews: [otherLabel, otherTextView])
+        let stackViews = [deceasedStackView, deceasedHiraganaStackView, homelessStackView, prefectureStackView ,placeStackView, addressStackView, scheduleStackView, otherStackView]
         stackViews.forEach {
             $0.axis = .vertical
             $0.spacing = 0
             $0.distribution = .fillEqually
         }
         
-        let baseStackView = UIStackView(arrangedSubviews: [deceasedStackView, deceasedHiraganaStackView, homelessStackView, prefectureStackView ,placeStackView, addressStackView, scheduleStackView, spaceView, createButton])
+        let baseStackView = UIStackView(arrangedSubviews: [deceasedStackView, deceasedHiraganaStackView, homelessStackView, prefectureStackView ,placeStackView, addressStackView, scheduleStackView, otherStackView, spaceView, createButton])
         baseStackView.axis = .vertical
         baseStackView.spacing = 10
         
@@ -109,6 +113,8 @@ class CreateFormViewController: UIViewController {
         addressLabel.anchor(height: 50)
         scheduleLabel.anchor(height: 50)
         createButton.anchor(height: 50)
+        otherLabel.anchor(height: 50)
+        otherTextView.anchor(height: 100)
         spaceView.anchor(height: 5)
         
         baseStackView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: scrollView.rightAnchor, leftPadding: 25, rightPadding: 25)
@@ -156,7 +162,8 @@ class CreateFormViewController: UIViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if !scheduleTextField.isFirstResponder,
            !addressTextField.isFirstResponder,
-           !placeTextField.isFirstResponder{
+           !placeTextField.isFirstResponder,
+           !otherTextView.isFirstResponder{
             return
         }
         
@@ -198,7 +205,8 @@ class CreateFormViewController: UIViewController {
                                             place: placeTextField.text!,
                                             address: addressTextField.text!,
                                             schedule: scheduleTextField.text!,
-                                            incense: false) { success in
+                                            incense: incese,
+                                            other: otherTextView.text) { success in
                 HUD.hide()
                 if success {
                     HUD.flash(.success, delay: 1)
