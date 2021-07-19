@@ -18,7 +18,11 @@ class CreatedListViewController: UIViewController {
         super.viewDidLoad()
         
         setupLayout()
-        setupBindinds()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "作成した香典・芳名録"
     }
 
     private func setupLayout() {
@@ -42,10 +46,6 @@ class CreatedListViewController: UIViewController {
         
         view.addSubview(createdTableView)
         createdTableView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: 20, leftPadding: 25, rightPadding: 25)
-    }
-    
-    private func setupBindinds() {
-        
     }
 
 }
@@ -72,9 +72,10 @@ extension CreatedListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let participantVC = ParticipantListViewController()
-        participantVC.documentID = infoArray[indexPath.row].documentID
-        self.navigationController?.pushViewController(participantVC, animated: true)
+        let funcListVC = FuncListViewController()
+        funcListVC.documentID = infoArray[indexPath.row].documentID
+        funcListVC.incense = infoArray[indexPath.row].incense
+        self.navigationController?.pushViewController(funcListVC, animated: true)
     }
     
     

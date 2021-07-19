@@ -8,17 +8,18 @@
 import UIKit
 
 class ParticipantDetailViewController: UIViewController {
-
     private let nameLabel = CommonTitleLabel(label: "名前")
     private let addressLabel = CommonTitleLabel(label: "住所")
     private let numberLabel = CommonTitleLabel(label: "電話番号")
     private let companyLabel = CommonTitleLabel(label: "会社/団体名")
     private let relationLabel = CommonTitleLabel(label: "ご関係")
+    private let incenseLabel = CommonTitleLabel(label: "香典")
     let nameDiscriptionLabel = DetailDiscriptionLabel(label: "")
     let addressDiscriptionLabel = DetailDiscriptionLabel(label: "")
     let numberDiscriptionLabel = DetailDiscriptionLabel(label: "")
     let companyDiscriptionLabel = DetailDiscriptionLabel(label: "")
     let relationDiscriptionLabel = DetailDiscriptionLabel(label: "")
+    let incenseDiscriptionLabel = DetailDiscriptionLabel(label: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,8 @@ class ParticipantDetailViewController: UIViewController {
         let numberStackView = UIStackView(arrangedSubviews: [numberLabel, numberDiscriptionLabel])
         let companyStackView = UIStackView(arrangedSubviews: [companyLabel, companyDiscriptionLabel])
         let relationStackView = UIStackView(arrangedSubviews: [relationLabel, relationDiscriptionLabel])
-        let stackViews = [nameStackView, addressStackView, numberStackView, companyStackView, relationStackView]
+        let incenseStackView = UIStackView(arrangedSubviews: [incenseLabel, incenseDiscriptionLabel])
+        let stackViews = [nameStackView, addressStackView, numberStackView, companyStackView, relationStackView, incenseStackView]
         stackViews.forEach {
             $0.axis = .vertical
             $0.spacing = 5

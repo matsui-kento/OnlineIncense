@@ -8,11 +8,17 @@
 import UIKit
 import Firebase
 import PKHUD
+import RxSwift
+import RxCocoa
 
-class ParticipantListViewController: UIViewController {
-
-    private let participantTableView = UITableView()
-    var  participantArray = [Participant]()
+class ParticipantListViewController: UIViewController, FilterArrayProtocol {
+    
+    private let disposeBag = DisposeBag()
+    private let searchButton = ActionButton(text: "検索する")
+    private let allButton = ActionButton(text: "全員表示する")
+    let participantTableView = UITableView()
+    var  allParticipantArray = [Participant]()
+    var participantArray = [Participant]()
     var documentID = ""
     
     override func viewDidLoad() {
@@ -35,7 +41,8 @@ class ParticipantListViewController: UIViewController {
         
         Firestore.fetchParticipant(documentID: documentID) { participantArray in
             if participantArray != nil {
-                self.participantArray = participantArray ?? [Participant]()
+                self.allParticipantArray = participantArray ?? [Participant]()
+                self.participantArray = self.allParticipantArray
                 self.participantTableView.reloadData()
             } else {
                 HUD.flash(.labeledError(title: "エラーが発生しました。", subtitle: "もう一度やり直してください。\nもし何度やり直してもできない場合は開発者に連絡してください。"))
@@ -44,12 +51,49 @@ class ParticipantListViewController: UIViewController {
         
         participantTableView.register(SearchTableViewCell.self, forCellReuseIdentifier: "cell")
         
-        view.addSubview(participantTableView)
-        participantTableView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: 20, leftPadding: 25, rightPadding: 25)
+        let baseStackView = UIStackView(arrangedSubviews: [allButton, searchButton, participantTableView])
+        baseStackView.spacing = 10
+        baseStackView.axis = .vertical
+        
+        view.addSubview(baseStackView)
+        searchButton.anchor(height: 50)
+        allButton.anchor(height: 50)
+        baseStackView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: 120, leftPadding: 25, rightPadding: 25)
     }
     
     private func setupBindings() {
         
+        searchButton.rx.tap
+            .asDriver()
+            .drive() { _ in
+                self.toSearchView()
+            }
+            .disposed(by: disposeBag)
+        
+        allButton.rx.tap
+            .asDriver()
+            .drive() { _ in
+                self.allParticipant()
+            }
+            .disposed(by: disposeBag)
+        
+    }
+    
+    private func toSearchView() {
+        let searchParticipantVC = SearchParticipantViewController()
+        searchParticipantVC.delegate = self
+        searchParticipantVC.participantArray = allParticipantArray
+        present(searchParticipantVC, animated: true, completion: nil)
+    }
+    
+    func filterArray(filterArray: [Participant]?) {
+        participantArray = filterArray ?? [Participant]()
+        participantTableView.reloadData()
+    }
+    
+    private func allParticipant() {
+        participantArray = allParticipantArray
+        participantTableView.reloadData()
     }
 
 }
@@ -82,6 +126,7 @@ extension ParticipantListViewController: UITableViewDelegate, UITableViewDataSou
         detailVC.numberDiscriptionLabel.text = participantArray[indexPath.row].number
         detailVC.companyDiscriptionLabel.text = participantArray[indexPath.row].company
         detailVC.relationDiscriptionLabel.text = participantArray[indexPath.row].relation
+        detailVC.incenseDiscriptionLabel.text = participantArray[indexPath.row].incense
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

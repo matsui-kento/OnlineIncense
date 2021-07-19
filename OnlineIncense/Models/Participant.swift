@@ -10,6 +10,7 @@ import Foundation
 struct Participant {
     
     let name: String
+    let hurigana: String
     let address: String
     let number: String
     let company: String
@@ -18,6 +19,7 @@ struct Participant {
     
     init(dic: [String:Any]) {
         self.name = dic["name"] as? String ?? ""
+        self.hurigana = dic["hurigana"] as? String ?? ""
         self.address = dic["address"] as? String ?? ""
         self.number = dic["number"] as? String ?? ""
         self.company = dic["company"] as? String ?? ""

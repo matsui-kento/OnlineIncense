@@ -96,11 +96,12 @@ extension Firestore {
         }
     }
     
-    static func setParticipant(name: String, address: String, number: String, company: String, relation: String, documentID: String, completion: @escaping (String) -> ()) {
+    static func setParticipant(name: String, hurigana: String, address: String, number: String, company: String, relation: String, documentID: String, completion: @escaping (String) -> ()) {
         
         let docRef = Firestore.firestore().collection("Infos").document(documentID).collection("Participants").document()
         let documentID = docRef.documentID
         let data: [String: Any] = ["name": name,
+                                   "hurigana": hurigana,
                                    "address": address,
                                    "number": number,
                                    "company": company,
