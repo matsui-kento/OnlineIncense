@@ -68,7 +68,7 @@ extension Firestore {
         }
     }
     
-    static func setInfoWithoutIncense(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, incense: Bool, completion: @escaping (Bool) -> ()) {
+    static func setInfoWithoutIncense(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, incense: Bool, other: String, completion: @escaping (Bool) -> ()) {
         
         print("extensionまで来た")
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -82,7 +82,8 @@ extension Firestore {
                                   "schedule": schedule,
                                   "uid": uid,
                                   "documentID": docRef.documentID,
-                                  "incense": incense]
+                                  "incense": incense,
+                                  "other": other]
         
         docRef.setData(data) { error in
             if error != nil {

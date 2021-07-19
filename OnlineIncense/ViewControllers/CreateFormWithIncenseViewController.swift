@@ -23,14 +23,16 @@ class CreateFormWithIncenseViewController: UIViewController {
     private let prefectureLabel = CommonTitleLabel(label: "出身地(都道府県のみ)")
     private let placeLabel = CommonTitleLabel(label: "式場")
     private let addressLabel = CommonTitleLabel(label: "式場住所")
-    private let scheduleLabel = CommonTitleLabel(label: "日程")
+    private let scheduleLabel = CommonTitleLabel(label: "お通夜の日程")
+    private let otherLabel = CommonTitleLabel(label: "その他(任意)")
     private let deceasedNameTextField = CommonTextField(text: "故人")
     private let deceasedHiraganaTextField = CommonTextField(text: "故人(ひらがな)")
     private let homelessTextField = CommonTextField(text: "喪家")
     private let prefectureTextField = CommonTextField(text: "出身地(都道府県のみ)")
     private let placeTextField = CommonTextField(text: "式場")
     private let addressTextField = CommonTextField(text: "住所")
-    private let scheduleTextField = CommonTextField(text: "日程")
+    private let scheduleTextField = CommonTextField(text: "お通夜の日程")
+    private let otherTextView = CreateTextView()
     private let createButton = ActionButton(text: "芳名録を作成する")
     private let scrollView = UIScrollView()
     private let spaceView = CommonTitleLabel(label: "")
@@ -83,6 +85,7 @@ class CreateFormWithIncenseViewController: UIViewController {
         let placeStackView = UIStackView(arrangedSubviews: [placeLabel, placeTextField])
         let addressStackView = UIStackView(arrangedSubviews: [addressLabel, addressTextField])
         let scheduleStackView = UIStackView(arrangedSubviews: [scheduleLabel, scheduleTextField])
+        let otherStackView = UIStackView(arrangedSubviews: [otherLabel, otherTextView])
         let stackViews = [deceasedStackView, deceasedHiraganaStackView, homelessStackView, prefectureStackView ,placeStackView, addressStackView, scheduleStackView]
         stackViews.forEach {
             $0.axis = .vertical
@@ -90,7 +93,7 @@ class CreateFormWithIncenseViewController: UIViewController {
             $0.distribution = .fillEqually
         }
         
-        let baseStackView = UIStackView(arrangedSubviews: [deceasedStackView, deceasedHiraganaStackView, homelessStackView, prefectureStackView ,placeStackView, addressStackView, scheduleStackView, spaceView, createButton])
+        let baseStackView = UIStackView(arrangedSubviews: [deceasedStackView, deceasedHiraganaStackView, homelessStackView, prefectureStackView ,placeStackView, addressStackView, scheduleStackView, otherStackView, spaceView, createButton])
         baseStackView.axis = .vertical
         baseStackView.spacing = 10
         
@@ -109,6 +112,8 @@ class CreateFormWithIncenseViewController: UIViewController {
         addressLabel.anchor(height: 50)
         scheduleLabel.anchor(height: 50)
         createButton.anchor(height: 50)
+        otherLabel.anchor(height: 50)
+        otherTextView.anchor(height: 100)
         spaceView.anchor(height: 5)
         
         baseStackView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: scrollView.rightAnchor, leftPadding: 25, rightPadding: 25)
@@ -198,7 +203,8 @@ class CreateFormWithIncenseViewController: UIViewController {
                                             place: placeTextField.text!,
                                             address: addressTextField.text!,
                                             schedule: scheduleTextField.text!,
-                                            incense: true) { success in
+                                            incense: true,
+                                            other: otherTextView.text) { success in
                 HUD.hide()
                 if success {
                     HUD.flash(.success, delay: 1)

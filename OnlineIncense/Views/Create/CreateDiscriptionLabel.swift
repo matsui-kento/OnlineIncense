@@ -11,8 +11,8 @@ class CreateDiscriptionLabel: UILabel {
     
     init() {
         super.init(frame: .zero)
-        text = "香典を受け取らない場合でも、芳名録としてご利用できます。香典を受け取る場合、手数料がかかります。"
-        font = .systemFont(ofSize: 20, weight: .bold)
+        text = "香典を受け取らない場合でも、オンライン芳名録としてご利用できます。マイページから香典を頂いた人や参列者などを確認できます。また、頂いた香典はマイページから振込申請ができます。\n＊香典を受け取る場合は10%の手数料がかかります。\n(例)100,000円の香典を頂いた場合、10%の10,000円が引かれた90,000円が銀行口座に振り込まれます。"
+        font = .systemFont(ofSize: 23, weight: .semibold)
         numberOfLines = 0
     }
     

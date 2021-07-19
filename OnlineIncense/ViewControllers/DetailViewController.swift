@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
     let placeDiscriptionLabel = DetailDiscriptionLabel(label: "")
     let addressDiscriptionLabel = DetailDiscriptionLabel(label: "")
     let scheduleDiscriptionLabel = DetailDiscriptionLabel(label: "")
+    let otherTextView = DetailTextView()
     var documentID = ""
     var info: Info?
     var incense = false
@@ -58,10 +59,18 @@ class DetailViewController: UIViewController {
         
         view.addSubview(baseStackView)
         view.addSubview(rejectionDiscription)
+        view.addSubview(otherTextView)
         view.addSubview(writeButton)
         baseStackView.anchor(top: view.topAnchor ,left: view.leftAnchor, right: view.rightAnchor, topPadding: 120, leftPadding: 25, rightPadding: 25)
-        rejectionDiscription.anchor(top: baseStackView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: 20, leftPadding: 25, rightPadding: 25)
-        writeButton.anchor(top: rejectionDiscription.bottomAnchor, centerX: view.centerXAnchor, width: view.bounds.width - 50, height: 50 ,topPadding: 20)
+        otherTextView.anchor(top: baseStackView.bottomAnchor, centerX: view.centerXAnchor, width: view.bounds.width - 50, height: 50 ,topPadding: 20)
+        rejectionDiscription.anchor(top: otherTextView.bottomAnchor, centerX: view.centerXAnchor, width: view.bounds.width - 50, height: 50 ,topPadding: 20)
+        writeButton.anchor(top: otherTextView.bottomAnchor, centerX: view.centerXAnchor, width: view.bounds.width - 50, height: 50 ,topPadding: 20)
+        
+        if otherTextView.text == "" {
+            otherTextView.isHidden = true
+        } else {
+            otherTextView.isHidden = false
+        }
     }
     
     private func setupBindings() {

@@ -148,6 +148,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         detailVC.scheduleDiscriptionLabel.text = infoArray[indexPath.row].schedule
         detailVC.documentID = infoArray[indexPath.row].documentID
         detailVC.incense = infoArray[indexPath.row].incense
+        detailVC.otherTextView.text = infoArray[indexPath.row].other
         detailVC.info = infoArray[indexPath.row]
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
