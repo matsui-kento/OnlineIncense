@@ -14,12 +14,14 @@ import Firebase
 class WritingFormViewController: UIViewController {
 
     private let nameLabel = CommonTitleLabel(label: "御芳名(代表者) *必須")
+    private let huriganaLabel = CommonTitleLabel(label: "御芳名(フリガナ) *必須")
     private let addressLabel = CommonTitleLabel(label: "住所 *必須")
     private let numberLabel = CommonTitleLabel(label: "電話 *必須")
     private let companyLabel = CommonTitleLabel(label: "会社名/団体名(任意)")
     private let relationLabel = CommonTitleLabel(label: "ご関係(友人/会社/親戚など) *必須")
     
     private let nameTextField = CommonTextField(text: "御芳名(代表者)")
+    private let huriganaTextField = CommonTextField(text: "御芳名(フリガナ)")
     private let addressTextField = CommonTextField(text: "住所")
     private let numberTextField = CommonTextField(text: "電話")
     private let companyTextField = CommonTextField(text: "会社名/団体名(任意)")
@@ -55,18 +57,19 @@ class WritingFormViewController: UIViewController {
         }
         
         let nameStackView = UIStackView(arrangedSubviews: [nameLabel, nameTextField])
+        let huriganaStackView = UIStackView(arrangedSubviews: [huriganaLabel, huriganaTextField])
         let addressStackView = UIStackView(arrangedSubviews: [addressLabel, addressTextField])
         let numberStackView = UIStackView(arrangedSubviews: [numberLabel, numberTextField])
         let companyStackView = UIStackView(arrangedSubviews: [companyLabel, companyTextField])
         let relationStackView = UIStackView(arrangedSubviews: [relationLabel, relationTextField])
-        let stackViews = [nameStackView, addressStackView, numberStackView, companyStackView, relationStackView]
+        let stackViews = [nameStackView, huriganaStackView, addressStackView, numberStackView, companyStackView, relationStackView]
         stackViews.forEach {
             $0.axis = .vertical
             $0.spacing = 0
             $0.distribution = .fillEqually
         }
         
-        let baseStackView = UIStackView(arrangedSubviews: [nameStackView, addressStackView, numberStackView, companyStackView, relationStackView, spaceView, doneButton])
+        let baseStackView = UIStackView(arrangedSubviews: [nameStackView, huriganaStackView, addressStackView, numberStackView, companyStackView, relationStackView, spaceView, doneButton])
         baseStackView.axis = .vertical
         baseStackView.spacing = 10
         
@@ -79,6 +82,7 @@ class WritingFormViewController: UIViewController {
         
         nameLabel.anchor(width: screenSize.width - 50, height: 50)
         addressLabel.anchor(height: 50)
+        huriganaLabel.anchor(height: 50)
         numberLabel.anchor(height: 50)
         companyLabel.anchor(height: 50)
         relationLabel.anchor(height: 50)
@@ -96,6 +100,9 @@ class WritingFormViewController: UIViewController {
         
         nameTextField.rx.text
             .bind(to: viewModel.nameSubject)
+            .disposed(by: disposeBag)
+        huriganaTextField.rx.text
+            .bind(to: viewModel.huriganaSubject)
             .disposed(by: disposeBag)
         addressTextField.rx.text
             .bind(to: viewModel.addressSubject)
@@ -123,22 +130,24 @@ class WritingFormViewController: UIViewController {
         
         HUD.show(.progress)
         if nameTextField.text != "" &&
+            huriganaTextField.text != "" &&
             addressTextField.text != "" &&
             numberTextField.text != "" &&
             relationTextField.text != "" {
-                Firestore.setParticipant(name: nameTextField.text!,
-                                         address: addressTextField.text!,
-                                         number: numberTextField.text!,
-                                         company: companyTextField.text ?? "個人",
-                                         relation: relationTextField.text!,
-                                         documentID: documentID) { participantID in
-                    if participantID != "" {
-                        self.participantID = participantID
-                        HUD.flash(.success)
-                        self.insenceOrNot()
-                    } else {
-                        HUD.flash(.labeledError(title: "芳名録の記入に失敗しました", subtitle: "必須項目を全て記入しているか確認してください。"), delay: 3)
-                    }
+            Firestore.setParticipant(name: nameTextField.text!,
+                                     hurigana: huriganaTextField.text!,
+                                     address: addressTextField.text!,
+                                     number: numberTextField.text!,
+                                     company: companyTextField.text ?? "個人",
+                                     relation: relationTextField.text!,
+                                     documentID: documentID) { participantID in
+                if participantID != "" {
+                    self.participantID = participantID
+                    HUD.flash(.success)
+                    self.insenceOrNot()
+                } else {
+                    HUD.flash(.labeledError(title: "芳名録の記入に失敗しました", subtitle: "必須項目を全て記入しているか確認してください。"), delay: 3)
+                }
                 }
             }
     }
