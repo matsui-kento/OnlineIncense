@@ -76,34 +76,6 @@ class ConfirmViewController: UIViewController {
         
     }
     
-//    private func transfer() {
-//
-//        guard let uid = Auth.auth().currentUser?.uid,
-//              let infoID = info?.documentID,
-//              let incensePrice = incesnePriceDiscriptionLabel.text,
-//              let transferPrice = tranferPriceDiscriptionLabel.text,
-//              let bankAccountName = bankAccountNameDiscriptionLabel.text,
-//              let bankName = bankNameDiscriptionLabel.text,
-//              let branchCode = branchCodeDiscriptionLabel.text,
-//              let bankAccountNumber = bankAccountNumberDiscriptionLabel.text else { return }
-//
-//        Firestore.setTransfer(incensePrice: incensePrice,
-//                              transferPrice: transferPrice,
-//                              bankAccountName: bankAccountName,
-//                              bankName: bankName,
-//                              branchCode: branchCode,
-//                              bankAccountNumber: bankAccountNumber,
-//                              uid: uid,
-//                              infoID: infoID) { success in
-//            if success {
-//
-//            } else {
-//                HUD.flash(.labeledError(title: "エラーが発生しました。", subtitle: "App Storeから開発者に連絡してください。"), delay: 5)
-//            }
-//        }
-//    }
-    
-    
     private func transferConfirmActionSheet() {
         guard let uid = Auth.auth().currentUser?.uid,
               let infoID = info?.documentID,

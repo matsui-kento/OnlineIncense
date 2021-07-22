@@ -110,7 +110,7 @@ class SearchViewController: UIViewController {
                 }
             }
         } else {
-            HUD.flash(.labeledError(title: "名前と都道府県を入力してください。", subtitle: ""), delay: 1)
+            HUD.flash(.labeledError(title: "検索エラー", subtitle: "名前と都道府県を入力してください。"), delay: 1)
         }
         
     }
