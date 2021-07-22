@@ -68,7 +68,7 @@ extension Firestore {
         }
     }
     
-    static func setInfoWithoutIncense(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, incense: Bool, other: String, completion: @escaping (Bool) -> ()) {
+    static func setInfo(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, incense: Bool, other: String, completion: @escaping (Bool) -> ()) {
         
         print("extensionまで来た")
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -83,7 +83,8 @@ extension Firestore {
                                   "uid": uid,
                                   "documentID": docRef.documentID,
                                   "incense": incense,
-                                  "other": other]
+                                  "other": other,
+                                  "search": true]
         
         docRef.setData(data) { error in
             if error != nil {
@@ -115,6 +116,54 @@ extension Firestore {
             }
             print("Firestoreへの保存が成功しました。")
             completion(documentID)
+        }
+    }
+    
+    static func setBankAccount(name: String, bankAccountName: String, bankNumber: String, bankName: String, branchCode: String, kindBankAccount: String, type: String, bankAccountNumber: String, uid: String, completion: @escaping (Bool) -> ()) {
+        let docRef = Firestore.firestore().collection("Users").document(uid).collection("BankAccounts").document()
+        let documentID = docRef.documentID
+        let data: [String: Any] = ["bankAccountName": bankAccountName,
+                                   "bankNumber": bankNumber,
+                                   "bankName": bankName,
+                                   "branchCode": branchCode,
+                                   "kindBankAccount": kindBankAccount,
+                                   "type": type,
+                                   "bankAccountNumber": bankAccountNumber,
+                                   "uid": uid,
+                                   "documentID": documentID]
+        docRef.setData(data) { error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(false)
+                return
+            }
+            
+            print("銀行口座の保存に成功しました。")
+            completion(true)
+        }
+    }
+    
+    static func setTransfer(incensePrice: String, transferPrice: String, bankAccountName: String, bankName: String, branchCode: String, bankAccountNumber: String, uid: String, infoID: String, completion: @escaping (Bool) -> ()) {
+        let docRef = Firestore.firestore().collection("NotTransfer").document()
+        let documentID = docRef.documentID
+        let data = ["incensePrice": incensePrice,
+                    "transferPrice": transferPrice,
+                    "bankAccountName": bankAccountName,
+                    "bankName": bankName,
+                    "branchCode": branchCode,
+                    "bankAccountNumber": bankAccountNumber,
+                    "uid": uid,
+                    "documentID": documentID]
+        docRef.setData(data) { error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(false)
+                return
+            }
+            print("振込申請が完了しました。")
+            Firestore.updateInfoForSearchAndTranfer(infoID: infoID) { success in
+                completion(success)
+            }
         }
     }
     
@@ -162,6 +211,20 @@ extension Firestore {
         }
     }
     
+    static func updateInfoForSearchAndTranfer(infoID: String, completion: @escaping (Bool) -> ()) {
+        
+        let docRef = Firestore.firestore().collection("Infos").document(infoID)
+        docRef.setData(["search": false, "transfer": true], merge: true) { error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(false)
+                return
+            }
+            print("Infoが検索に引っ掛からないようにしました。")
+            completion(true)
+        }
+    }
+    
     static func fetchInfoForSeach(name: String, prefecture: String, completion: @escaping ([Info]?) -> ()) {
         
         let docRef = Firestore.firestore().collection("Infos")
@@ -178,7 +241,7 @@ extension Firestore {
                 return info
             })
             
-            infoArray = infoArray?.filter { ($0.deceasedHiragana == name) && ($0.prefecture == prefecture) }
+            infoArray = infoArray?.filter { ($0.deceasedHiragana == name) && ($0.prefecture == prefecture) && ($0.search == true) }
             completion(infoArray ?? [Info]())
         }
     }
@@ -237,6 +300,40 @@ extension Firestore {
             })
             
             completion(participantArray)
+        }
+    }
+    
+    static func fetchBankAccount(uid: String, completion: @escaping ([BankAccount]?) -> ()) {
+        
+        let docRef = Firestore.firestore().collection("Users").document(uid).collection("BankAccounts")
+        docRef.getDocuments { snapshot, error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+                return
+            }
+            
+            let bankAccountArray = snapshot?.documents.map({ snapshot -> BankAccount in
+                let data = snapshot.data()
+                let bankAccount = BankAccount(dic: data)
+                return bankAccount
+            })
+            
+            completion(bankAccountArray)
+        }
+    }
+    
+    static func deleteInfo(infoID: String, completion: @escaping (Bool) -> ()) {
+        
+        let docRef = Firestore.firestore().collection("Infos").document(infoID)
+        docRef.delete { error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(false)
+                return
+            }
+            print("infoの削除に成功しました。")
+            completion(true)
         }
     }
 }

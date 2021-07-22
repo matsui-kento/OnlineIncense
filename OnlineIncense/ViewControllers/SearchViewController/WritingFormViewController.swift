@@ -91,6 +91,8 @@ class WritingFormViewController: UIViewController {
         
         baseStackView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: scrollView.rightAnchor, leftPadding: 25, rightPadding: 25)
         
+        doneButton.setTitleColor(.gray, for: .disabled)
+        
     }
     
     private func setupBindings() {

@@ -150,6 +150,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         detailVC.incense = infoArray[indexPath.row].incense
         detailVC.otherTextView.text = infoArray[indexPath.row].other
         detailVC.info = infoArray[indexPath.row]
+        detailVC.writeButton.isHidden = false
+        detailVC.rejectionDiscription.isHidden = false
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
