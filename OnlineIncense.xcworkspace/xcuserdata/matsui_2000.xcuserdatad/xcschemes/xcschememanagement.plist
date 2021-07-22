@@ -62,14 +62,14 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>49</integer>
+			<integer>48</integer>
 		</dict>
 		<key>QuickStart (Playground) 19.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>50</integer>
+			<integer>49</integer>
 		</dict>
 		<key>QuickStart (Playground) 2.xcscheme</key>
 		<dict>
@@ -83,7 +83,43 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
+			<integer>50</integer>
+		</dict>
+		<key>QuickStart (Playground) 21.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>51</integer>
+		</dict>
+		<key>QuickStart (Playground) 22.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>52</integer>
+		</dict>
+		<key>QuickStart (Playground) 23.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>53</integer>
+		</dict>
+		<key>QuickStart (Playground) 24.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>55</integer>
+		</dict>
+		<key>QuickStart (Playground) 25.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>56</integer>
+		</dict>
+		<key>QuickStart (Playground) 26.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>57</integer>
 		</dict>
 		<key>QuickStart (Playground) 3.xcscheme</key>
 		<dict>
