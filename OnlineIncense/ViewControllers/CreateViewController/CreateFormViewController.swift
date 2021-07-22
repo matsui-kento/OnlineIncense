@@ -154,7 +154,6 @@ class CreateFormViewController: UIViewController {
         createButton.rx.tap
             .asDriver()
             .drive() { _ in
-                print("タップされたよ")
                 self.sendInfo()
             }
             .disposed(by: disposeBag)
@@ -191,34 +190,31 @@ class CreateFormViewController: UIViewController {
     private func sendInfo() {
         
         HUD.show(.progress)
-        print("処理が始める")
-        if deceasedNameTextField.text != "" &&
-            deceasedHiraganaTextField.text != "" &&
-            homelessTextField.text != "" &&
-            prefectureTextField.text != "" &&
-            placeTextField.text != "" &&
-            addressTextField.text != "" &&
-            scheduleTextField.text != "" {
-            
-            Firestore.setInfo(deceasedName: deceasedNameTextField.text!,
-                                            deceasedHiragana: deceasedHiraganaTextField.text!,
-                                            homeless: homelessTextField.text!,
-                                            prefecture: prefectureTextField.text!,
-                                            place: placeTextField.text!,
-                                            address: addressTextField.text!,
-                                            schedule: scheduleTextField.text!,
-                                            incense: incese,
-                                            other: otherTextView.text) { success in
-                HUD.hide()
-                if success {
-                    HUD.flash(.success, delay: 1)
-                    self.navigationController?.popViewController(animated: true)
-                } else {
-                    HUD.flash(.labeledError(title: "作成に失敗しました", subtitle: "全て正確に記入できている確認してください"), delay: 3)
-                }
+        guard let deceasedName = deceasedNameTextField.text,
+              let deceasedHiragana = deceasedHiraganaTextField.text,
+              let homeless = homelessTextField.text,
+              let prefecture = prefectureTextField.text,
+              let place = placeTextField.text,
+              let address = addressTextField.text,
+              let schedule = scheduleTextField.text else { return }
+        
+        
+        Firestore.setInfo(deceasedName: deceasedName,
+                          deceasedHiragana: deceasedHiragana,
+                          homeless: homeless,
+                          prefecture: prefecture,
+                          place: place,
+                          address: address,
+                          schedule: schedule,
+                          incense: incese,
+                          other: otherTextView.text) { success in
+            HUD.hide()
+            if success {
+                HUD.flash(.success, delay: 1)
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                HUD.flash(.labeledError(title: "作成に失敗しました", subtitle: "全て正確に記入できている確認してください"), delay: 3)
             }
-        } else {
-            HUD.flash(.labeledError(title: "作成に失敗しました", subtitle: "全て正確に記入できている確認してください"), delay: 2.5)
         }
     }
 }

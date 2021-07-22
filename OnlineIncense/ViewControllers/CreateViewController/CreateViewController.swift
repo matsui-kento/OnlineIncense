@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Firebase
 
 class CreateViewController: UIViewController {
 
@@ -45,6 +46,7 @@ class CreateViewController: UIViewController {
         createButtonWithIncense.rx.tap
             .asDriver()
             .drive() { _ in
+                self.validateWithLogin()
                 let createFormVC = CreateFormViewController()
                 createFormVC.incese = true
                 createFormVC.transfer = false
@@ -56,6 +58,7 @@ class CreateViewController: UIViewController {
         createButton.rx.tap
             .asDriver()
             .drive() { _ in
+                self.validateWithLogin()
                 let createFormVC = CreateFormViewController()
                 createFormVC.incese = false
                 createFormVC.transfer = true
@@ -63,7 +66,23 @@ class CreateViewController: UIViewController {
                 self.navigationController?.pushViewController(createFormVC, animated: true)
             }
             .disposed(by: disposeBag)
-        
     }
-
+    
+    private func validateWithLogin() {
+        
+        let uid = Auth.auth().currentUser?.uid
+        
+        if uid == nil {
+            let alert = UIAlertController(title: "ログインしますか？", message: "香典・芳名録を作成するにはログインする必要があります。", preferredStyle: .actionSheet)
+            let toLogin = UIAlertAction(title: "ログイン", style: .default, handler: {
+                (action: UIAlertAction!) in
+                let loginVC = LoginViewController()
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true)
+            })
+            alert.addAction(toLogin)
+            alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }

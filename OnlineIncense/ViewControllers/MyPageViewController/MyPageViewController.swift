@@ -49,21 +49,6 @@ class MyPageViewController: UIViewController {
     
     private func setupLayout() {
         
-//        if let uid = Auth.auth().currentUser?.uid {
-//            self.loginButton.isHidden = true
-//            self.logoutButton.isHidden = false
-//            self.lookButton.isHidden = false
-//            Firestore.fetchUser(uid: uid) { user in
-//                self.user = user
-//                self.nameLabel.text = user?.name
-//            }
-//        } else {
-//            self.loginButton.isHidden = false
-//            self.logoutButton.isHidden = true
-//            self.lookButton.isHidden = true
-//            self.nameLabel.text = "ログインしていません"
-//        }
-        
         let baseStackView = UIStackView(arrangedSubviews: [nameLabel, lookButton, privacyButton, logoutButton, loginButton])
         baseStackView.spacing = 10
         baseStackView.axis = .vertical
