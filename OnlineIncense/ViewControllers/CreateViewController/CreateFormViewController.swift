@@ -37,6 +37,8 @@ class CreateFormViewController: UIViewController {
     private let scrollView = UIScrollView()
     private let spaceView = CommonTitleLabel(label: "")
     var incese = false
+    var search = true
+    var transfer = true
     
     private let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
     private let prefectures = ["北海道", "青森県", "岩手県", "宮城県", "秋田県",
@@ -119,7 +121,7 @@ class CreateFormViewController: UIViewController {
         
         baseStackView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: scrollView.rightAnchor, leftPadding: 25, rightPadding: 25)
         
-        createButton.setTitleColor(.black, for: .disabled)
+        createButton.setTitleColor(.gray, for: .disabled)
     }
     
     private func setupBindings() {
@@ -198,7 +200,7 @@ class CreateFormViewController: UIViewController {
             addressTextField.text != "" &&
             scheduleTextField.text != "" {
             
-            Firestore.setInfoWithoutIncense(deceasedName: deceasedNameTextField.text!,
+            Firestore.setInfo(deceasedName: deceasedNameTextField.text!,
                                             deceasedHiragana: deceasedHiraganaTextField.text!,
                                             homeless: homelessTextField.text!,
                                             prefecture: prefectureTextField.text!,

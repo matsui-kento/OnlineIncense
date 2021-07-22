@@ -47,6 +47,8 @@ class CreateViewController: UIViewController {
             .drive() { _ in
                 let createFormVC = CreateFormViewController()
                 createFormVC.incese = true
+                createFormVC.transfer = false
+                createFormVC.search = true
                 self.navigationController?.pushViewController(createFormVC, animated: true)
             }
             .disposed(by: disposeBag)
@@ -56,6 +58,8 @@ class CreateViewController: UIViewController {
             .drive() { _ in
                 let createFormVC = CreateFormViewController()
                 createFormVC.incese = false
+                createFormVC.transfer = true
+                createFormVC.search = true
                 self.navigationController?.pushViewController(createFormVC, animated: true)
             }
             .disposed(by: disposeBag)

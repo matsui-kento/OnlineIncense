@@ -25,8 +25,8 @@ class DetailViewController: UIViewController {
     var documentID = ""
     var info: Info?
     var incense = false
-    private let rejectionDiscription = RejectionDiscription()
-    private let writeButton = ActionButton(text: "芳名録を記入する")
+    let rejectionDiscription = RejectionDiscription()
+    let writeButton = ActionButton(text: "芳名録を記入する")
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {

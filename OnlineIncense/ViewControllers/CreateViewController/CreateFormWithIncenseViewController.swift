@@ -196,7 +196,7 @@ class CreateFormWithIncenseViewController: UIViewController {
             addressTextField.text != "" &&
             scheduleTextField.text != "" {
             
-            Firestore.setInfoWithoutIncense(deceasedName: deceasedNameTextField.text!,
+            Firestore.setInfo(deceasedName: deceasedNameTextField.text!,
                                             deceasedHiragana: deceasedHiraganaTextField.text!,
                                             homeless: homelessTextField.text!,
                                             prefecture: prefectureTextField.text!,

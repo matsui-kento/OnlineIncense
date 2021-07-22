@@ -21,6 +21,8 @@ struct Info {
     let incensePrice: Int
     let incense: Bool
     let other: String
+    let search: Bool
+    let transfer: Bool
     
     init(dic: [String:Any]) {
         self.deceasedName = dic["deceasedName"] as? String ?? ""
@@ -35,5 +37,7 @@ struct Info {
         self.incense = dic["incense"] as? Bool ?? false
         self.incensePrice = dic["incensePrice"] as? Int ?? 0
         self.other = dic["other"] as? String ?? ""
+        self.search = dic["search"] as? Bool ?? true
+        self.transfer = dic["transfer"] as? Bool ?? true
     }
 }

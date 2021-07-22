@@ -18,10 +18,7 @@ import CurlDSL
 
 class IncenseFormViewController: UIViewController {
     
-    
-    let client = OmiseSDK.Client.init(publicKey: "pkey_test_5oi3wew1ac5xrchxet8")
-    private let publicKey = "pkey_test_5oi3wew1ac5xrchxet8"
-    private let secretKey = "skey_test_5ogwkc4d99dvxi9z15q"
+    private let omise = Omise.shared
     private let disposeBag = DisposeBag()
     private let moneyLabel = DetailDiscriptionLabel(label: "金額")
     private let moneyTextField = CommonTextField(text: "香典の金額")
@@ -109,7 +106,7 @@ class IncenseFormViewController: UIViewController {
             priceInt = Int(price)!
         }
         
-        let creditCardView = CreditCardFormViewController.makeCreditCardFormViewController(withPublicKey: publicKey)
+        let creditCardView = CreditCardFormViewController.makeCreditCardFormViewController(withPublicKey: omise.publicKey)
         creditCardView.delegate = self
         creditCardView.handleErrors = true
         present(creditCardView, animated: true, completion: nil)
@@ -178,7 +175,7 @@ extension IncenseFormViewController: CreditCardFormViewControllerDelegate {
         let semaphore = DispatchSemaphore(value: 0)
         let url = URL(string: "https://api.omise.co/charges")!
         let session = URLSession.shared
-        var request = try? CURL("curl -X POST -u \(secretKey): https://api.omise.co/charges").buildRequest()
+        var request = try? CURL("curl -X POST -u \(omise.secretKey): https://api.omise.co/charges").buildRequest()
         request?.httpMethod = "POST"
         do {
             request?.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -194,7 +191,7 @@ extension IncenseFormViewController: CreditCardFormViewControllerDelegate {
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
                     let error = json["failure_code"] as? String
                     self.errorMessage = error
-                    semaphore.signal()
+                    
                 }
             } catch {
                 
