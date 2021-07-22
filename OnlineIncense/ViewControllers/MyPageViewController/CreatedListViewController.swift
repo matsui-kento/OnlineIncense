@@ -16,15 +16,10 @@ class CreatedListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "香典・芳名録"
         
         setupLayout()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.title = "作成した香典・芳名録"
-    }
-
     private func setupLayout() {
         
         view.backgroundColor = .white
