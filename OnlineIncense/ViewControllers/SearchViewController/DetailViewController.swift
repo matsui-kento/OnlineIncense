@@ -36,6 +36,11 @@ class DetailViewController: UIViewController {
         setupBindings()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "香典・芳名録の詳細"
+    }
+    
     private func setupLayout() {
         
         if incense {

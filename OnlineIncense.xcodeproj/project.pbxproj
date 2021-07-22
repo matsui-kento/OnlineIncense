@@ -66,6 +66,7 @@
 		0E61461D26A7F0AA0026255F /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61461C26A7F0AA0026255F /* ConfirmViewController.swift */; };
 		0E61461F26A82E480026255F /* ImportantButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61461E26A82E480026255F /* ImportantButton.swift */; };
 		0E61462126A9025C0026255F /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61462026A9025C0026255F /* Transfer.swift */; };
+		0E61462326A9BB570026255F /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61462226A9BB570026255F /* secret.swift */; };
 		D9590958B1682C296F8294CC /* Pods_OnlineIncense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,7 @@
 		0E61461C26A7F0AA0026255F /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		0E61461E26A82E480026255F /* ImportantButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantButton.swift; sourceTree = "<group>"; };
 		0E61462026A9025C0026255F /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
+		0E61462226A9BB570026255F /* secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
 		2859B6519EA8E319B326791C /* Pods-OnlineIncense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineIncense.release.xcconfig"; path = "Target Support Files/Pods-OnlineIncense/Pods-OnlineIncense.release.xcconfig"; sourceTree = "<group>"; };
 		8A52D9CCF66312A4EA04C480 /* Pods_OnlineIncense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlineIncense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -194,6 +196,7 @@
 				0E263EE72699B2C2005BE8FE /* LaunchScreen.storyboard */,
 				0E263EEA2699B2C2005BE8FE /* Info.plist */,
 				0E263F3A269B3D1F005BE8FE /* GoogleService-Info.plist */,
+				0E61462226A9BB570026255F /* secret.swift */,
 			);
 			path = OnlineIncense;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				0E263F23269A97F9005BE8FE /* DetailDiscriptionLabel.swift in Sources */,
 				0E263F2F269ABA8E005BE8FE /* CreateFormViewController.swift in Sources */,
 				0E263EF52699B346005BE8FE /* MyPageViewController.swift in Sources */,
+				0E61462326A9BB570026255F /* secret.swift in Sources */,
 				0E263F142699F148005BE8FE /* CreateTitleLabel.swift in Sources */,
 				0E263F48269C1151005BE8FE /* LoginViewModel.swift in Sources */,
 				0E61461126A548B90026255F /* AddBankAccountViewController.swift in Sources */,

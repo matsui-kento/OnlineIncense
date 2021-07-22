@@ -38,6 +38,7 @@ class ConfirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.navigationItem.title = "振込申請"
         
         setupLayout()
         setupBindings()

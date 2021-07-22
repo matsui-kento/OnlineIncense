@@ -17,8 +17,8 @@ class MainTabViewController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.hidesBackButton = true
         self.navigationController?.isNavigationBarHidden = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: nil, action: nil)
     }
     
     

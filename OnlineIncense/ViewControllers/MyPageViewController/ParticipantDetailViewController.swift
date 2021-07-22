@@ -23,13 +23,8 @@ class ParticipantDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupLayout()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.navigationItem.title = "参列者の詳細"
+        setupLayout()
     }
     
     private func setupLayout() {

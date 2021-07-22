@@ -41,6 +41,7 @@ class AddBankAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "振込先の追加"
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Firestore.fetchUser(uid: uid) { user in
