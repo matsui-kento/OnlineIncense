@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     private let passwordTextField = AuthTextField(text: "パスワード")
     private let loginButton = ActionButton(text: "ログイン")
     private let dontHaveAcountButton = AuthTextButton(label: "アカウントをお持ちでない方はこちら")
+    private let dontCreateButton = AuthTextButton(label: "アカウントを作成しない方はこちら")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +38,17 @@ class LoginViewController: UIViewController {
         baseStackView.axis = .vertical
         baseStackView.spacing = 25
         baseStackView.distribution = .fillEqually
+        let bottomTextButtonStackView = UIStackView(arrangedSubviews: [dontHaveAcountButton, dontCreateButton])
+        bottomTextButtonStackView.axis = .vertical
+        bottomTextButtonStackView.spacing = 25
+        bottomTextButtonStackView.distribution = .fillEqually
         view.addSubview(baseStackView)
-        view.addSubview(dontHaveAcountButton)
+        view.addSubview(bottomTextButtonStackView)
         baseStackView.anchor(left: view.leftAnchor, right: view.rightAnchor, centerY: view.centerYAnchor, leftPadding: 25, rightPadding: 25)
         emailTextField.anchor(height: 50)
-        dontHaveAcountButton.anchor(bottom: view.bottomAnchor, centerX: view.centerXAnchor, bottomPadding: 100)
+        bottomTextButtonStackView.anchor(bottom: view.bottomAnchor, centerX: view.centerXAnchor, bottomPadding: 100)
         
-        loginButton.setTitleColor(.black, for: .disabled)
+        loginButton.setTitleColor(.gray, for: .disabled)
     }
     
     private func setupBindings() {
@@ -61,7 +66,6 @@ class LoginViewController: UIViewController {
         loginButton.rx.tap
             .asDriver()
             .drive() { _ in
-                print("タップされた")
                 self.login()
             }
             .disposed(by: disposeBag)
@@ -69,8 +73,14 @@ class LoginViewController: UIViewController {
         dontHaveAcountButton.rx.tap
             .asDriver()
             .drive() { _ in
-                let registerVC = RegisterViewController()
-                self.navigationController?.pushViewController(registerVC, animated: true)
+                self.toRegisterVC()
+            }
+            .disposed(by: disposeBag)
+        
+        dontCreateButton.rx.tap
+            .asDriver()
+            .drive() { _ in
+                self.dismiss(animated: true, completion: nil)
             }
             .disposed(by: disposeBag)
         
@@ -83,13 +93,17 @@ class LoginViewController: UIViewController {
         Auth.loginUser(email: email, password: password) { success in
             if success {
                 HUD.flash(.success, delay: 1)
-                //self.navigationController?.popViewController(animated: true)
-                let mainVC = MainTabViewController()
-                self.navigationController?.pushViewController(mainVC, animated: true)
+                self.dismiss(animated: true, completion: nil)
             } else {
                 HUD.flash(.labeledError(title: "ログインに失敗しました", subtitle: "メールアドレスもしくはパスワードが間違えています。"), delay: 2.5)
             }
         }
+    }
+    
+    private func toRegisterVC() {
+        let registerVC = RegisterViewController()
+        registerVC.delegate = self
+        self.navigationController?.pushViewController(registerVC, animated: true)
     }
     
 }
@@ -104,5 +118,15 @@ extension LoginViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+}
+
+extension LoginViewController: ToMainVCProtocol {
+    func toLoginVC(success: Bool) {
+        if success {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
     
 }

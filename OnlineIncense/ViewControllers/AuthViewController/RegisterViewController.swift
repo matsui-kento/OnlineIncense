@@ -11,8 +11,13 @@ import RxSwift
 import RxCocoa
 import Firebase
 
+protocol ToMainVCProtocol {
+    func toLoginVC(success: Bool)
+}
+
 class RegisterViewController: UIViewController {
 
+    var delegate: ToMainVCProtocol?
     private let viewModel = RegisterViewModel()
     private let disposeBag = DisposeBag()
     private let nameTextField = AuthTextField(text: "名前(利用者様)")
@@ -20,6 +25,7 @@ class RegisterViewController: UIViewController {
     private let passwordTextField = AuthTextField(text: "パスワード")
     private let registerButton = ActionButton(text: "新規登録")
     private let haveAcountButton = AuthTextButton(label: "すでにアカウントをお持ちの方はこちら")
+    private let dontCreateButton = AuthTextButton(label: "アカウントを作成しない方はこちら")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +44,17 @@ class RegisterViewController: UIViewController {
         baseStackView.axis = .vertical
         baseStackView.spacing = 25
         baseStackView.distribution = .fillEqually
+        let bottomTextButtonStackView = UIStackView(arrangedSubviews: [haveAcountButton, dontCreateButton])
+        bottomTextButtonStackView.axis = .vertical
+        bottomTextButtonStackView.spacing = 25
+        bottomTextButtonStackView.distribution = .fillEqually
         view.addSubview(baseStackView)
-        view.addSubview(haveAcountButton)
+        view.addSubview(bottomTextButtonStackView)
         baseStackView.anchor(left: view.leftAnchor, right: view.rightAnchor, centerY: view.centerYAnchor, leftPadding: 25, rightPadding: 25)
         emailTextField.anchor(height: 50)
-        haveAcountButton.anchor(bottom: view.bottomAnchor, centerX: view.centerXAnchor, bottomPadding: 100)
+        bottomTextButtonStackView.anchor(bottom: view.bottomAnchor, centerX: view.centerXAnchor, bottomPadding: 100)
         
-        registerButton.setTitleColor(.black, for: .disabled)
+        registerButton.setTitleColor(.gray, for: .disabled)
     }
 
     private func setupBindings() {
@@ -76,6 +86,13 @@ class RegisterViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        dontCreateButton.rx.tap
+            .asDriver()
+            .drive() { _ in
+                self.toMainVC()
+            }
+            .disposed(by: disposeBag)
+        
     }
     
     private func registerUser() {
@@ -88,12 +105,16 @@ class RegisterViewController: UIViewController {
             HUD.hide()
             if success {
                 HUD.flash(.success, delay: 1)
-                let mainTabVC = MainTabViewController()
-                self.navigationController?.pushViewController(mainTabVC, animated: true)
+                self.toMainVC()
             } else {
                 HUD.flash(.labeledError(title: "登録に失敗しました", subtitle: "メールアドレスがすでに登録されている、もしくはメールアドレスが間違えています。"), delay: 3)
             }
         }
+    }
+    
+    private func toMainVC() {
+        self.navigationController?.popViewController(animated: true)
+        self.delegate?.toLoginVC(success: true)
     }
 }
 

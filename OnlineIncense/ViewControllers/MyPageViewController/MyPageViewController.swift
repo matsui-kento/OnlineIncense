@@ -30,9 +30,6 @@ class MyPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.parent?.navigationItem.title = "マイページ"
-    }
-    
-    private func setupLayout() {
         
         if let uid = Auth.auth().currentUser?.uid {
             self.loginButton.isHidden = true
@@ -48,6 +45,24 @@ class MyPageViewController: UIViewController {
             self.lookButton.isHidden = true
             self.nameLabel.text = "ログインしていません"
         }
+    }
+    
+    private func setupLayout() {
+        
+//        if let uid = Auth.auth().currentUser?.uid {
+//            self.loginButton.isHidden = true
+//            self.logoutButton.isHidden = false
+//            self.lookButton.isHidden = false
+//            Firestore.fetchUser(uid: uid) { user in
+//                self.user = user
+//                self.nameLabel.text = user?.name
+//            }
+//        } else {
+//            self.loginButton.isHidden = false
+//            self.logoutButton.isHidden = true
+//            self.lookButton.isHidden = true
+//            self.nameLabel.text = "ログインしていません"
+//        }
         
         let baseStackView = UIStackView(arrangedSubviews: [nameLabel, lookButton, privacyButton, logoutButton, loginButton])
         baseStackView.spacing = 10
@@ -55,7 +70,7 @@ class MyPageViewController: UIViewController {
         baseStackView.distribution = .fillEqually
         view.addSubview(baseStackView)
         baseStackView.anchor(left: view.leftAnchor, right: view.rightAnchor, centerY: view.centerYAnchor, leftPadding: 25, rightPadding: 25)
-        logoutButton.anchor(height: 50)
+        privacyButton.anchor(height: 50)
     }
     
     private func setupBindings() {
