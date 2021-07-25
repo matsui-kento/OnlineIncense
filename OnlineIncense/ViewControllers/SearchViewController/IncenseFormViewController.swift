@@ -114,7 +114,6 @@ class IncenseFormViewController: UIViewController {
     }
     
     private func refresh() {
-        print(errorMessage as Any)
         if errorMessage == nil {
             errorDiscription.isHidden = true
             
@@ -191,7 +190,7 @@ extension IncenseFormViewController: CreditCardFormViewControllerDelegate {
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
                     let error = json["failure_code"] as? String
                     self.errorMessage = error
-                    
+                    semaphore.signal()
                 }
             } catch {
                 

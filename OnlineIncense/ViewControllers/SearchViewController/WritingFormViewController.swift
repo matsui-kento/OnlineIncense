@@ -167,7 +167,9 @@ class WritingFormViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if !relationTextField.isFirstResponder {
+        if !relationTextField.isFirstResponder,
+           !numberTextField.isFirstResponder,
+           !companyTextField.isFirstResponder {
             return
         }
         
