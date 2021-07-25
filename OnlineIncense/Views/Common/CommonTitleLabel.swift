@@ -13,6 +13,7 @@ class CommonTitleLabel: UILabel {
         super.init(frame: .zero)
         text = label
         font = .systemFont(ofSize: 20, weight: .bold)
+        textColor = .darkGray
     }
     
     required init?(coder: NSCoder) {

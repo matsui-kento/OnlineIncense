@@ -91,7 +91,7 @@ class SearchParticipantViewController: UIViewController {
     }
     
     private func filterWithoutIncense() {
-        participantArray =  participantArray.filter { $0.incense == "香典なし" }
+        participantArray =  participantArray.filter { $0.incense == "香典なし" || $0.incense == "0" }
         delegate?.filterArray(filterArray: participantArray)
         dismiss(animated: true, completion: nil)
     }
