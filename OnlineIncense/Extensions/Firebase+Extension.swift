@@ -225,6 +225,12 @@ extension Firestore {
         }
     }
     
+    static func updateInfoForEdit(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, other: String, completion: @escaping (Bool) -> ()) {
+        
+        
+        
+    }
+    
     static func fetchInfoForSeach(name: String, prefecture: String, completion: @escaping ([Info]?) -> ()) {
         
         let docRef = Firestore.firestore().collection("Infos")

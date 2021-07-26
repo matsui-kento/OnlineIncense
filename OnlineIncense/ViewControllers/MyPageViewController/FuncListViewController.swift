@@ -22,6 +22,7 @@ class FuncListViewController: UIViewController {
     private let infoDetailButton = ActionButton(text: "香典・芳名録の詳細")
     private let participantListButton = ActionButton(text: "参列者の一覧")
     private let moneyButton = ActionButton(text: "香典の振込依頼")
+    private let editButton = ActionButton(text: "香典・芳名録の編集")
     private let deleteButton = ImportantButton(text: "芳名録の削除")
     var info: Info?
     var documentID = ""
@@ -88,6 +89,13 @@ class FuncListViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        editButton.rx.tap
+            .asDriver()
+            .drive() { _ in
+                
+            }
+            .disposed(by: disposeBag)
+        
         deleteButton.rx.tap
             .asDriver()
             .drive() { _ in
@@ -126,6 +134,18 @@ class FuncListViewController: UIViewController {
         bankAccountVC.info = info
         self.navigationController?.pushViewController(bankAccountVC, animated: true)
         
+    }
+    
+    private func toEditFunc() {
+        let createFormVC = CreateFormViewController()
+        createFormVC.deceasedNameTextField.text = info?.deceasedName ?? ""
+        createFormVC.deceasedHiraganaTextField.text = info?.deceasedHiragana ?? ""
+        createFormVC.homelessTextField.text = info?.homeless ?? ""
+        createFormVC.prefectureTextField.text = info?.prefecture ?? ""
+        createFormVC.placeTextField.text = info?.place ?? ""
+        createFormVC.addressTextField.text = info?.address ?? ""
+        createFormVC.scheduleTextField.text = info?.schedule ?? ""
+        self.navigationController?.pushViewController(createFormVC, animated: true)
     }
     
     private func deleteInfo() {
