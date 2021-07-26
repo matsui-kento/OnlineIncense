@@ -101,7 +101,7 @@ class ConfirmViewController: UIViewController {
                                   infoID: infoID) { success in
                 if success {
                     self.delegate?.transfer(success: true)
-                    self.navigationController?.popViewControllers(viewsToPop: 4)
+                    self.navigationController?.popViewControllers(viewsToPop: 3)
                 } else {
                     HUD.flash(.labeledError(title: "エラーが発生しました。", subtitle: "App Storeから開発者に連絡してください。"), delay: 5)
                 }
