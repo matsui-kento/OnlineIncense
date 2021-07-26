@@ -53,7 +53,7 @@ class FuncListViewController: UIViewController {
         
         view.backgroundColor = .white
         deleteButton.backgroundColor = .red
-        let baseStackView = UIStackView(arrangedSubviews: [infoDetailButton, participantListButton, moneyButton, deleteButton])
+        let baseStackView = UIStackView(arrangedSubviews: [infoDetailButton, editButton, participantListButton, moneyButton, deleteButton])
         baseStackView.spacing = 10
         baseStackView.distribution = .fillEqually
         baseStackView.axis = .vertical
@@ -92,7 +92,7 @@ class FuncListViewController: UIViewController {
         editButton.rx.tap
             .asDriver()
             .drive() { _ in
-                
+                self.toEditFunc()
             }
             .disposed(by: disposeBag)
         
@@ -137,15 +137,18 @@ class FuncListViewController: UIViewController {
     }
     
     private func toEditFunc() {
-        let createFormVC = CreateFormViewController()
-        createFormVC.deceasedNameTextField.text = info?.deceasedName ?? ""
-        createFormVC.deceasedHiraganaTextField.text = info?.deceasedHiragana ?? ""
-        createFormVC.homelessTextField.text = info?.homeless ?? ""
-        createFormVC.prefectureTextField.text = info?.prefecture ?? ""
-        createFormVC.placeTextField.text = info?.place ?? ""
-        createFormVC.addressTextField.text = info?.address ?? ""
-        createFormVC.scheduleTextField.text = info?.schedule ?? ""
-        self.navigationController?.pushViewController(createFormVC, animated: true)
+        let updateFormVC = UpdateFormViewController()
+        updateFormVC.deceasedNameTextField.text = info?.deceasedName ?? ""
+        updateFormVC.deceasedHiraganaTextField.text = info?.deceasedHiragana ?? ""
+        updateFormVC.homelessTextField.text = info?.homeless ?? ""
+        updateFormVC.prefectureTextField.text = info?.prefecture ?? ""
+        updateFormVC.placeTextField.text = info?.place ?? ""
+        updateFormVC.addressTextField.text = info?.address ?? ""
+        updateFormVC.scheduleTextField.text = info?.schedule ?? ""
+        updateFormVC.otherTextView.text = info?.other
+        updateFormVC.infoID = info?.documentID ?? ""
+        updateFormVC.delegate = self
+        self.navigationController?.pushViewController(updateFormVC, animated: true)
     }
     
     private func deleteInfo() {
@@ -164,5 +167,17 @@ class FuncListViewController: UIViewController {
         alert.addAction(delete)
         alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension FuncListViewController: UpdateInfoForEditProtocol {
+    
+    func updateInfo(success: Bool) {
+        if success {
+            Firestore.fetchInfoAfterUpdate(infoID: info!.documentID) { info in
+                self.info = info
+                HUD.flash(.success, delay: 1)
+            }
+        }
     }
 }

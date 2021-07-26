@@ -12,6 +12,10 @@ import RxSwift
 import Firebase
 import FirebaseFirestore
 
+protocol UpdateInfoForEditProtocol {
+    func updateInfo(success: Bool)
+}
+
 class UpdateFormViewController: UIViewController {
     
     private let viewModel = CreateFormViewModel()
@@ -25,20 +29,19 @@ class UpdateFormViewController: UIViewController {
     private let addressLabel = CommonTitleLabel(label: "式場住所")
     private let scheduleLabel = CommonTitleLabel(label: "お通夜の日程")
     private let otherLabel = CommonTitleLabel(label: "その他(任意)")
-    private let deceasedNameTextField = CommonTextField(text: "故人")
-    private let deceasedHiraganaTextField = CommonTextField(text: "故人(ひらがな)")
-    private let homelessTextField = CommonTextField(text: "喪家")
-    private let prefectureTextField = CommonTextField(text: "出身地(都道府県のみ)")
-    private let placeTextField = CommonTextField(text: "式場")
-    private let addressTextField = CommonTextField(text: "住所")
-    private let scheduleTextField = CommonTextField(text: "お通夜の日程")
-    private let otherTextView = CreateTextView()
-    private let createButton = ActionButton(text: "芳名録を作成する")
+    let deceasedNameTextField = CommonTextField(text: "故人")
+    let deceasedHiraganaTextField = CommonTextField(text: "故人(ひらがな)")
+    let homelessTextField = CommonTextField(text: "喪家")
+    let prefectureTextField = CommonTextField(text: "出身地(都道府県のみ)")
+    let placeTextField = CommonTextField(text: "式場")
+    let addressTextField = CommonTextField(text: "住所")
+    let scheduleTextField = CommonTextField(text: "お通夜の日程")
+    let otherTextView = CreateTextView()
+    private let createButton = ActionButton(text: "芳名録を編集する")
     private let scrollView = UIScrollView()
     private let spaceView = CommonTitleLabel(label: "")
-    var incese = false
-    var search = true
-    var transfer = true
+    var infoID = ""
+    var delegate: UpdateInfoForEditProtocol?
     
     private let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
     private let prefectures = ["北海道", "青森県", "岩手県", "宮城県", "秋田県",
@@ -199,19 +202,18 @@ class UpdateFormViewController: UIViewController {
               let schedule = scheduleTextField.text else { return }
         
         
-        Firestore.setInfo(deceasedName: deceasedName,
+        Firestore.updateInfoForEdit(deceasedName: deceasedName,
                           deceasedHiragana: deceasedHiragana,
                           homeless: homeless,
                           prefecture: prefecture,
                           place: place,
                           address: address,
                           schedule: schedule,
-                          incense: incese,
-                          other: otherTextView.text) { success in
+                          other: otherTextView.text, infoID: infoID) { success in
             HUD.hide()
             if success {
-                HUD.flash(.success, delay: 1)
-                self.navigationController?.popViewController(animated: true)
+                self.delegate?.updateInfo(success: true)
+                self.navigationController?.popViewControllers(viewsToPop: 1)
             } else {
                 HUD.flash(.labeledError(title: "作成に失敗しました", subtitle: "全て正確に記入できている確認してください"), delay: 3)
             }

@@ -225,9 +225,28 @@ extension Firestore {
         }
     }
     
-    static func updateInfoForEdit(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, other: String, completion: @escaping (Bool) -> ()) {
+    static func updateInfoForEdit(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, other: String, infoID: String, completion: @escaping (Bool) -> ()) {
         
-        
+        let docRef = Firestore.firestore().collection("Infos").document(infoID)
+        let data: [String:Any] = ["deceasedName": deceasedName,
+                                  "deceasedHiragana": deceasedHiragana,
+                                  "homeless": homeless,
+                                  "prefecture": prefecture,
+                                  "place": place,
+                                  "address": address,
+                                  "schedule": schedule,
+                                  "other": other]
+
+        docRef.setData(data, merge: true) { error in
+            if error != nil {
+                print("Firestoreへの情報更新が失敗しました。")
+                print(error.debugDescription)
+                completion(false)
+                return
+            }
+            print("Firestoreの情報更新が成功しました。")
+            completion(true)
+        }
         
     }
     
@@ -271,6 +290,23 @@ extension Firestore {
             infoArray = infoArray?.filter { ($0.uid == uid) }
             completion(infoArray ?? [Info]())
         }
+    }
+    
+    static func fetchInfoAfterUpdate(infoID: String, completion: @escaping (Info?) -> ()) {
+        
+        let docRef = Firestore.firestore().collection("Infos").document(infoID)
+        docRef.getDocument { snapshot, error in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+                return
+            }
+            
+            let data = snapshot?.data()
+            let info = Info(dic: data!)
+            completion(info)
+        }
+        
     }
     
     static func fetchUser(uid: String, completion: @escaping (User?) -> ()) {
