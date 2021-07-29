@@ -18,6 +18,7 @@ class MyPageViewController: UIViewController {
     private let logoutButton = ActionButton(text: "ログアウト")
     private let loginButton = ActionButton(text: "ログイン")
     private let lookButton = ActionButton(text: "作成した香典・芳名録を見る")
+    private let deleteAccountButton = ImportantButton(text: "アカウントの削除")
     private let privacyButton = ActionButton(text: "プライバシーポリシー")
     var user:User?
     
@@ -35,6 +36,7 @@ class MyPageViewController: UIViewController {
             self.loginButton.isHidden = true
             self.logoutButton.isHidden = false
             self.lookButton.isHidden = false
+            self.deleteAccountButton.isHidden = false
             Firestore.fetchUser(uid: uid) { user in
                 self.user = user
                 self.nameLabel.text = user?.name
@@ -43,13 +45,14 @@ class MyPageViewController: UIViewController {
             self.loginButton.isHidden = false
             self.logoutButton.isHidden = true
             self.lookButton.isHidden = true
+            self.deleteAccountButton.isHidden = true
             self.nameLabel.text = "ログインしていません"
         }
     }
     
     private func setupLayout() {
         
-        let baseStackView = UIStackView(arrangedSubviews: [nameLabel, lookButton, privacyButton, logoutButton, loginButton])
+        let baseStackView = UIStackView(arrangedSubviews: [nameLabel, lookButton, privacyButton, logoutButton, loginButton, deleteAccountButton])
         baseStackView.spacing = 10
         baseStackView.axis = .vertical
         baseStackView.distribution = .fillEqually
@@ -86,6 +89,14 @@ class MyPageViewController: UIViewController {
             .drive() { _ in
                 let createdListVC = CreatedListViewController()
                 self.navigationController?.pushViewController(createdListVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        deleteAccountButton.rx.tap
+            .asDriver()
+            .drive() { _ in
+                let deleteUserVC = DeleteAccountViewController()
+                self.navigationController?.pushViewController(deleteUserVC, animated: true)
             }
             .disposed(by: disposeBag)
         

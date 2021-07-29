@@ -17,7 +17,7 @@ class ParticipantListViewController: UIViewController, FilterArrayProtocol {
     private let searchButton = ActionButton(text: "検索する")
     private let allButton = ActionButton(text: "全員表示する")
     let participantTableView = UITableView()
-    var  allParticipantArray = [Participant]()
+    var allParticipantArray = [Participant]()
     var participantArray = [Participant]()
     var documentID = ""
     

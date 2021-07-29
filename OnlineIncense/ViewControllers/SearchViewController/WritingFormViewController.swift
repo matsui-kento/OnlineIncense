@@ -157,6 +157,7 @@ class WritingFormViewController: UIViewController {
     private func insenceOrNot() {
         if insence {
             let insenceFormVC = IncenseFormViewController()
+            insenceFormVC.delegate = self
             insenceFormVC.info = info
             insenceFormVC.infoID = documentID
             insenceFormVC.participantID = participantID
@@ -199,4 +200,12 @@ extension WritingFormViewController: UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+}
+
+extension WritingFormViewController: IncenseProtocol {
+    func sendIncense(success: Bool) {
+        if success {
+            HUD.flash(.success, delay: 1)
+        }
+    }
 }
