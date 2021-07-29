@@ -43,6 +43,9 @@
 		0E263F4A269C28F2005BE8FE /* CreateFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F49269C28F2005BE8FE /* CreateFormViewModel.swift */; };
 		0E263F50269DA593005BE8FE /* WritingFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E263F4F269DA593005BE8FE /* WritingFormViewController.swift */; };
 		0E44F42926AE8FFD00E83331 /* UpdateFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F42826AE8FFD00E83331 /* UpdateFormViewController.swift */; };
+		0E44F42B26AECBC300E83331 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F42A26AECBC300E83331 /* DeleteAccountViewController.swift */; };
+		0E44F42D26AECC8D00E83331 /* DeleteAccountTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F42C26AECC8D00E83331 /* DeleteAccountTitleLabel.swift */; };
+		0E44F42F26AECCD100E83331 /* DeleteAccountDiscriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F42E26AECCD100E83331 /* DeleteAccountDiscriptionLabel.swift */; };
 		0E6145E7269E7BC80026255F /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145E6269E7BC80026255F /* Participant.swift */; };
 		0E6145E9269E7D720026255F /* WritingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145E8269E7D720026255F /* WritingFormViewModel.swift */; };
 		0E6145EB269E8ED70026255F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145EA269E8ED70026255F /* User.swift */; };
@@ -125,6 +128,9 @@
 		0E263F49269C28F2005BE8FE /* CreateFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormViewModel.swift; sourceTree = "<group>"; };
 		0E263F4F269DA593005BE8FE /* WritingFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFormViewController.swift; sourceTree = "<group>"; };
 		0E44F42826AE8FFD00E83331 /* UpdateFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFormViewController.swift; sourceTree = "<group>"; };
+		0E44F42A26AECBC300E83331 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
+		0E44F42C26AECC8D00E83331 /* DeleteAccountTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountTitleLabel.swift; sourceTree = "<group>"; };
+		0E44F42E26AECCD100E83331 /* DeleteAccountDiscriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountDiscriptionLabel.swift; sourceTree = "<group>"; };
 		0E6145E6269E7BC80026255F /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		0E6145E8269E7D720026255F /* WritingFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFormViewModel.swift; sourceTree = "<group>"; };
 		0E6145EA269E8ED70026255F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -233,9 +239,8 @@
 				0E61460326A3D44A0026255F /* Incense */,
 				0E263F2A269AAF25005BE8FE /* Common */,
 				0E263F1D269A93A3005BE8FE /* Detail */,
-				0E263F062699BB68005BE8FE /* Register */,
 				0E263F052699BB59005BE8FE /* Login */,
-				0E263F032699BB3C005BE8FE /* MyPage */,
+				0E263F032699BB3C005BE8FE /* DeleteAccount */,
 				0E263F30269ABB04005BE8FE /* CreateForm */,
 				0E263F022699BB36005BE8FE /* Create */,
 				0E263F012699BB2E005BE8FE /* Search */,
@@ -262,11 +267,13 @@
 			path = Create;
 			sourceTree = "<group>";
 		};
-		0E263F032699BB3C005BE8FE /* MyPage */ = {
+		0E263F032699BB3C005BE8FE /* DeleteAccount */ = {
 			isa = PBXGroup;
 			children = (
+				0E44F42C26AECC8D00E83331 /* DeleteAccountTitleLabel.swift */,
+				0E44F42E26AECCD100E83331 /* DeleteAccountDiscriptionLabel.swift */,
 			);
-			path = MyPage;
+			path = DeleteAccount;
 			sourceTree = "<group>";
 		};
 		0E263F052699BB59005BE8FE /* Login */ = {
@@ -276,13 +283,6 @@
 				0E263F40269BFBCE005BE8FE /* AuthTextButton.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		0E263F062699BB68005BE8FE /* Register */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Register;
 			sourceTree = "<group>";
 		};
 		0E263F1D269A93A3005BE8FE /* Detail */ = {
@@ -371,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				0E263EF42699B346005BE8FE /* MyPageViewController.swift */,
+				0E44F42A26AECBC300E83331 /* DeleteAccountViewController.swift */,
 				0E6145EC269E99880026255F /* CreatedListViewController.swift */,
 				0E61460826A463ED0026255F /* FuncListViewController.swift */,
 				0E44F42826AE8FFD00E83331 /* UpdateFormViewController.swift */,
@@ -554,6 +555,7 @@
 				0E263EFE2699B41B005BE8FE /* UIImage+Extension.swift in Sources */,
 				0E6145EF269EA1F40026255F /* ParticipantListViewController.swift in Sources */,
 				0E6145E9269E7D720026255F /* WritingFormViewModel.swift in Sources */,
+				0E44F42B26AECBC300E83331 /* DeleteAccountViewController.swift in Sources */,
 				0E263EF92699B36C005BE8FE /* RegisterViewController.swift in Sources */,
 				0E6145EB269E8ED70026255F /* User.swift in Sources */,
 				0E263EE12699B2C0005BE8FE /* MainTabViewController.swift in Sources */,
@@ -568,6 +570,7 @@
 				0E263F162699F157005BE8FE /* CreateDiscriptionLabel.swift in Sources */,
 				0E263F1F269A93BD005BE8FE /* CommonTitleLabel.swift in Sources */,
 				0E263EF12699B327005BE8FE /* SearchViewController.swift in Sources */,
+				0E44F42F26AECCD100E83331 /* DeleteAccountDiscriptionLabel.swift in Sources */,
 				0E263F002699B42A005BE8FE /* UIView+Extension.swift in Sources */,
 				0E263F0C2699C658005BE8FE /* ActionButton.swift in Sources */,
 				0E263EDF2699B2C0005BE8FE /* SceneDelegate.swift in Sources */,
@@ -575,6 +578,7 @@
 				0E263F3D269BF5BD005BE8FE /* AuthTextField.swift in Sources */,
 				0E263F082699BBA0005BE8FE /* CommonTextField.swift in Sources */,
 				0E61462126A9025C0026255F /* Transfer.swift in Sources */,
+				0E44F42D26AECC8D00E83331 /* DeleteAccountTitleLabel.swift in Sources */,
 				0E61461326A55BDA0026255F /* BankAccount.swift in Sources */,
 				0E61461F26A82E480026255F /* ImportantButton.swift in Sources */,
 				0E263F44269C0EFB005BE8FE /* RegisterViewModel.swift in Sources */,

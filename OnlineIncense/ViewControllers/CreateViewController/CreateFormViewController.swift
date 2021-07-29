@@ -207,7 +207,8 @@ class CreateFormViewController: UIViewController {
                           address: address,
                           schedule: schedule,
                           incense: incese,
-                          other: otherTextView.text) { success in
+                          other: otherTextView.text,
+                          transfer: transfer) { success in
             HUD.hide()
             if success {
                 HUD.flash(.success, delay: 1)

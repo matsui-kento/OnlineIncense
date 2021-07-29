@@ -155,7 +155,7 @@ class FuncListViewController: UIViewController {
         let alert = UIAlertController(title: "芳名録を削除する", message: "削除すると、復元できません。\n芳名録を削除すると、香典の振込申請ができなくなります。", preferredStyle: .actionSheet)
         let delete = UIAlertAction(title: "削除する", style: .destructive, handler: {
             (action: UIAlertAction!) in
-            Firestore.deleteInfo(infoID: self.documentID) { success in
+            Firestore.deleteOneInfo(infoID: self.documentID) { success in
                 if success {
                     self.delegate?.deleteInfo(success: true)
                     self.navigationController?.popViewControllers(viewsToPop: 1)

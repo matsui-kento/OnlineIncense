@@ -42,6 +42,8 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //self.navigationItem.hidesBackButton = true
+        self.parent?.navigationItem.hidesBackButton = true
         self.parent?.navigationItem.title = "香典・芳名録を探す"
     }
     

@@ -15,9 +15,14 @@ import Alamofire
 import SwiftyJSON
 import CurlDSL
 
+protocol IncenseProtocol {
+    func sendIncense(success: Bool)
+}
+
 
 class IncenseFormViewController: UIViewController {
     
+    var delegate: IncenseProtocol?
     private let omise = Omise.shared
     private let disposeBag = DisposeBag()
     private let moneyLabel = DetailDiscriptionLabel(label: "金額")
@@ -88,8 +93,7 @@ class IncenseFormViewController: UIViewController {
         Firestore.updateIncenseForParticipant(incense: "0", infoID: self.infoID, participantID: self.participantID) { success in
             if success {
                 HUD.flash(.success, delay: 1)
-                let mainVC = MainTabViewController()
-                self.navigationController?.pushViewController(mainVC, animated: true)
+                self.navigationController?.popViewControllers(viewsToPop: 2)
             } else {
                 HUD.flash(.labeledError(title: "エラーが起きました", subtitle: "App Storeから開発者に連絡してください。"), delay: 1)
             }
@@ -201,11 +205,11 @@ extension IncenseFormViewController: CreditCardFormViewControllerDelegate {
         semaphore.wait()
         
         if errorMessage == nil {
-            HUD.flash(.success)
             dismiss(animated: true, completion: nil)
             Firestore.updateIncenseForParticipant(incense: price, infoID: infoID, participantID: participantID) { success in
                 if success {
                     Firestore.updateIncenseForInfo(infoID: self.infoID, newIncensePrice: self.priceInt)
+                    self.delegate?.sendIncense(success: true)
                     self.navigationController?.popViewControllers(viewsToPop: 2)
                 }
             }

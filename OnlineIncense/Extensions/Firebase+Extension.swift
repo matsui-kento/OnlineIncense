@@ -68,9 +68,8 @@ extension Firestore {
         }
     }
     
-    static func setInfo(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, incense: Bool, other: String, completion: @escaping (Bool) -> ()) {
+    static func setInfo(deceasedName: String, deceasedHiragana: String, homeless: String, prefecture: String, place: String, address: String, schedule: String, incense: Bool, other: String, transfer: Bool, completion: @escaping (Bool) -> ()) {
         
-        print("extensionまで来た")
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let docRef = Firestore.firestore().collection("Infos").document()
         let data: [String:Any] = ["deceasedName": deceasedName,
@@ -84,7 +83,8 @@ extension Firestore {
                                   "documentID": docRef.documentID,
                                   "incense": incense,
                                   "other": other,
-                                  "search": true]
+                                  "search": true,
+                                  "transfer": transfer]
         
         docRef.setData(data) { error in
             if error != nil {
@@ -99,15 +99,16 @@ extension Firestore {
     }
     
     static func setParticipant(name: String, hurigana: String, address: String, number: String, company: String, relation: String, documentID: String, completion: @escaping (String) -> ()) {
-        
+
         let docRef = Firestore.firestore().collection("Infos").document(documentID).collection("Participants").document()
-        let documentID = docRef.documentID
+        let participantID = docRef.documentID
         let data: [String: Any] = ["name": name,
                                    "hurigana": hurigana,
                                    "address": address,
                                    "number": number,
                                    "company": company,
-                                   "relation": relation]
+                                   "relation": relation,
+                                   "documentID": participantID]
         docRef.setData(data) { error in
             if error != nil {
                 print(error.debugDescription)
@@ -115,7 +116,7 @@ extension Firestore {
                 return
             }
             print("Firestoreへの保存が成功しました。")
-            completion(documentID)
+            completion(participantID)
         }
     }
     
@@ -326,7 +327,7 @@ extension Firestore {
     }
     
     static func fetchParticipant(documentID: String, completion: @escaping ([Participant]?) -> ()) {
-        
+
         let docRef = Firestore.firestore().collection("Infos").document(documentID).collection("Participants")
         docRef.getDocuments { snapshot, error in
             if error != nil {
@@ -334,7 +335,6 @@ extension Firestore {
                 completion(nil)
                 return
             }
-            
             let participantArray = snapshot?.documents.map({ snapshot -> Participant in
                 let data = snapshot.data()
                 let participant = Participant(dic: data)
@@ -365,7 +365,7 @@ extension Firestore {
         }
     }
     
-    static func deleteInfo(infoID: String, completion: @escaping (Bool) -> ()) {
+    static func deleteOneInfo(infoID: String, completion: @escaping (Bool) -> ()) {
         
         let docRef = Firestore.firestore().collection("Infos").document(infoID)
         docRef.delete { error in
@@ -377,5 +377,52 @@ extension Firestore {
             print("infoの削除に成功しました。")
             completion(true)
         }
+    }
+
+    static func deleteAllInfo(infoIDs: [String], completion: @escaping () -> ()) {
+        let docRef = Firestore.firestore().collection("Infos")
+        
+        for infoID in infoIDs {
+            docRef.document(infoID).delete()
+        }
+        completion()
+    }
+    
+    static func deleteAllParticipant(infoIDs: [String], completion: @escaping () -> ()) {
+        var participantIDs: [String] = []
+
+        for infoID in infoIDs {
+            let docRef = Firestore.firestore().collection("Infos").document(infoID).collection("Participants")
+            Firestore.fetchParticipant(documentID: infoID) { participantArray in
+                let participants = participantArray!
+                for participant in participants {
+                    participantIDs.append(participant.documentID) }
+                for participantID in participantIDs {
+                    docRef.document(participantID).delete()
+                }
+            }
+        }
+        completion()
+    }
+    
+    static func deleteUser(uid: String, completion: @escaping () -> ()) {
+        let docRef = Firestore.firestore().collection("Users").document(uid)
+        
+        docRef.delete { error in
+            if error != nil {
+                print(error.debugDescription)
+                return
+            }
+            completion()
+        }
+    }
+    
+    static func deleteAllBankAccount(uid: String, bankAccountIDs: [String], completion: @escaping () -> ()) {
+        print("銀行口座を削除します。")
+        let docRef = Firestore.firestore().collection("Users").document(uid).collection("BankAccounts")
+        for bankAccountID in bankAccountIDs {
+            docRef.document(bankAccountID).delete()
+        }
+        completion()
     }
 }
