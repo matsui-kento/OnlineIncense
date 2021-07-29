@@ -63,7 +63,7 @@ class DeleteAccountViewController: UIViewController {
             
             self.deleteAllAccountData() { success in
                 if success {
-                    self.logout()
+                    print("ユーザーに関する全てのデータを削除に成功")
                 }
             }
             
@@ -80,21 +80,28 @@ class DeleteAccountViewController: UIViewController {
         Firestore.deleteAllParticipant(infoIDs: infoIDs) {
             Firestore.deleteAllInfo(infoIDs: self.infoIDs) {
                 Firestore.deleteAllBankAccount(uid: uid, bankAccountIDs: self.bankAccountIDs) {
-                    Firestore.deleteUser(uid: uid) {
-                        self.navigationController?.popViewController(animated: true)
-                        completion(true)
+                    Firestore.deleteUserFromFirestore(uid: uid) {
+                        self.deleteUserFromAuth {
+                            self.navigationController?.popViewController(animated: true)
+                            completion(true)
+                        }
                     }
                 }
             }
         }
     }
     
-    private func logout() {
-        do {
-            let firebaseAuth = Auth.auth()
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print("Error siging out: %@", signOutError)
+    
+    private func deleteUserFromAuth(completion: @escaping () -> ()) {
+        
+        let user = Auth.auth().currentUser
+        
+        user?.delete { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                completion()
+            }
         }
     }
     
