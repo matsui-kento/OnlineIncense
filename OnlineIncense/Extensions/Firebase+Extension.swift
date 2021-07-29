@@ -405,7 +405,7 @@ extension Firestore {
         completion()
     }
     
-    static func deleteUser(uid: String, completion: @escaping () -> ()) {
+    static func deleteUserFromFirestore(uid: String, completion: @escaping () -> ()) {
         let docRef = Firestore.firestore().collection("Users").document(uid)
         
         docRef.delete { error in
