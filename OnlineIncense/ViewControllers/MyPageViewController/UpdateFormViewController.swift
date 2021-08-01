@@ -40,6 +40,7 @@ class UpdateFormViewController: UIViewController {
     private let createButton = ActionButton(text: "芳名録を編集する")
     private let scrollView = UIScrollView()
     private let spaceView = CommonTitleLabel(label: "")
+    private let padding = Padding.shared
     var infoID = ""
     var delegate: UpdateInfoForEditProtocol?
     
@@ -122,7 +123,7 @@ class UpdateFormViewController: UIViewController {
         otherTextView.anchor(height: 100)
         spaceView.anchor(height: 5)
         
-        baseStackView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: scrollView.rightAnchor, leftPadding: 25, rightPadding: 25)
+        baseStackView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: scrollView.rightAnchor, bottomPadding: 100, leftPadding: padding.left, rightPadding: padding.right)
         
         createButton.setTitleColor(.gray, for: .disabled)
     }

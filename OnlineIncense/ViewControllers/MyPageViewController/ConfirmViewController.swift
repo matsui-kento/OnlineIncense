@@ -19,6 +19,7 @@ class ConfirmViewController: UIViewController {
 
     var delegate: TransferProtocol?
     private let disposeBag = DisposeBag()
+    private let padding = Padding.shared
     private let transferButton = ImportantButton(text: "振込申請")
     private let incensePriceLabel = CommonTitleLabel(label: "香典総額")
     private let tansferPriceLabel = CommonTitleLabel(label: "振込金額")
@@ -63,7 +64,7 @@ class ConfirmViewController: UIViewController {
         baseStackView.axis = .vertical
         view.addSubview(baseStackView)
         transferButton.anchor(height: 50)
-        baseStackView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: 120, leftPadding: 25, rightPadding: 25)
+        baseStackView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: padding.top, leftPadding: padding.left, rightPadding: padding.right)
     }
     
     private func setupBindings() {

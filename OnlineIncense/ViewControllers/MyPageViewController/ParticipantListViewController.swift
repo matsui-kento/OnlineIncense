@@ -14,6 +14,7 @@ import RxCocoa
 class ParticipantListViewController: UIViewController, FilterArrayProtocol {
     
     private let disposeBag = DisposeBag()
+    private let padding = Padding.shared
     private let searchButton = ActionButton(text: "検索する")
     private let allButton = ActionButton(text: "全員表示する")
     let participantTableView = UITableView()
@@ -58,7 +59,7 @@ class ParticipantListViewController: UIViewController, FilterArrayProtocol {
         view.addSubview(baseStackView)
         searchButton.anchor(height: 50)
         allButton.anchor(height: 50)
-        baseStackView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: 120, leftPadding: 25, rightPadding: 25)
+        baseStackView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: padding.top, leftPadding: padding.left, rightPadding: padding.right)
     }
     
     private func setupBindings() {

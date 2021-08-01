@@ -15,6 +15,7 @@ class BankAccountViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
     private let addBankAccountButton = ActionButton(text: "振込先を追加する")
+    private let padding = Padding.shared
     let bankAccountTableView = UITableView()
     var bankAccountArray = [BankAccount]()
     var info: Info?
@@ -47,7 +48,7 @@ class BankAccountViewController: UIViewController {
         baseStackView.spacing = 10
         view.addSubview(baseStackView)
         addBankAccountButton.anchor(height: 50)
-        baseStackView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: 120, leftPadding: 25, rightPadding: 25)
+        baseStackView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: padding.top, leftPadding: padding.left, rightPadding: padding.right)
         bankAccountTableView.reloadData()
     }
     

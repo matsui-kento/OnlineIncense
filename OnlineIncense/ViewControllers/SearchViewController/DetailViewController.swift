@@ -28,6 +28,7 @@ class DetailViewController: UIViewController {
     let rejectionDiscription = RejectionDiscription()
     let writeButton = ActionButton(text: "芳名録を記入する")
     private let disposeBag = DisposeBag()
+    private let padding = Padding.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +67,7 @@ class DetailViewController: UIViewController {
         view.addSubview(rejectionDiscription)
         view.addSubview(otherTextView)
         view.addSubview(writeButton)
-        baseStackView.anchor(top: view.topAnchor ,left: view.leftAnchor, right: view.rightAnchor, topPadding: 120, leftPadding: 25, rightPadding: 25)
+        baseStackView.anchor(top: view.topAnchor ,left: view.leftAnchor, right: view.rightAnchor, topPadding: padding.top, leftPadding: padding.left, rightPadding: padding.right)
         otherTextView.anchor(top: baseStackView.bottomAnchor, centerX: view.centerXAnchor, width: view.bounds.width - 50, height: 50 ,topPadding: 20)
         rejectionDiscription.anchor(top: otherTextView.bottomAnchor, centerX: view.centerXAnchor, width: view.bounds.width - 50, height: 50 ,topPadding: 20)
         writeButton.anchor(top: otherTextView.bottomAnchor, centerX: view.centerXAnchor, width: view.bounds.width - 50, height: 50 ,topPadding: 20)
