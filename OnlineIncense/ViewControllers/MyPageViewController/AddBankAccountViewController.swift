@@ -155,8 +155,7 @@ class AddBankAccountViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if !kindBankAccountTextField.isFirstResponder,
-           !typeTextField.isFirstResponder,
+        if !typeTextField.isFirstResponder,
            !bankAccountNumberTextField.isFirstResponder {
             return
         }
