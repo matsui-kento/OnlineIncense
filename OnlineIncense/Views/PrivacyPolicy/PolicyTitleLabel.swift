@@ -1,13 +1,14 @@
 //
-//  DetailTextLabel.swift
+//  PolicyTitleLabel.swift
 //  OnlineIncense
 //
-//  Created by matsui kento on 2021/07/11.
+//  Created by matsui kento on 2021/08/01.
 //
 
+import Foundation
 import UIKit
 
-class CommonTitleLabel: UILabel {
+class PolicyTitleLabel: UILabel {
     
     init(label: String) {
         super.init(frame: .zero)

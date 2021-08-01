@@ -46,13 +46,15 @@
 		0E44F42B26AECBC300E83331 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F42A26AECBC300E83331 /* DeleteAccountViewController.swift */; };
 		0E44F42D26AECC8D00E83331 /* DeleteAccountTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F42C26AECC8D00E83331 /* DeleteAccountTitleLabel.swift */; };
 		0E44F42F26AECCD100E83331 /* DeleteAccountDiscriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F42E26AECCD100E83331 /* DeleteAccountDiscriptionLabel.swift */; };
+		0E44F43126B2A52500E83331 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F43026B2A52500E83331 /* PrivacyPolicyViewController.swift */; };
+		0E44F43326B61E4600E83331 /* PolicyTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F43226B61E4600E83331 /* PolicyTitleLabel.swift */; };
+		0E44F43626B61E8000E83331 /* PolicyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F43526B61E8000E83331 /* PolicyTextView.swift */; };
 		0E6145E7269E7BC80026255F /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145E6269E7BC80026255F /* Participant.swift */; };
 		0E6145E9269E7D720026255F /* WritingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145E8269E7D720026255F /* WritingFormViewModel.swift */; };
 		0E6145EB269E8ED70026255F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145EA269E8ED70026255F /* User.swift */; };
 		0E6145ED269E99880026255F /* CreatedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145EC269E99880026255F /* CreatedListViewController.swift */; };
 		0E6145EF269EA1F40026255F /* ParticipantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145EE269EA1F40026255F /* ParticipantListViewController.swift */; };
 		0E6145F1269ED8A70026255F /* ParticipantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145F0269ED8A70026255F /* ParticipantDetailViewController.swift */; };
-		0E6145F3269EDF2C0026255F /* CreateFormWithIncenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145F2269EDF2C0026255F /* CreateFormWithIncenseViewController.swift */; };
 		0E6145F6269F0B460026255F /* OmiseSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 0E6145F5269F0B460026255F /* OmiseSDK */; };
 		0E6145F7269F0B460026255F /* OmiseSDK in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0E6145F5269F0B460026255F /* OmiseSDK */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0E6145FA269F0BC30026255F /* IncenseFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145F9269F0BC30026255F /* IncenseFormViewController.swift */; };
@@ -131,13 +133,15 @@
 		0E44F42A26AECBC300E83331 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		0E44F42C26AECC8D00E83331 /* DeleteAccountTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountTitleLabel.swift; sourceTree = "<group>"; };
 		0E44F42E26AECCD100E83331 /* DeleteAccountDiscriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountDiscriptionLabel.swift; sourceTree = "<group>"; };
+		0E44F43026B2A52500E83331 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		0E44F43226B61E4600E83331 /* PolicyTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyTitleLabel.swift; sourceTree = "<group>"; };
+		0E44F43526B61E8000E83331 /* PolicyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyTextView.swift; sourceTree = "<group>"; };
 		0E6145E6269E7BC80026255F /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		0E6145E8269E7D720026255F /* WritingFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFormViewModel.swift; sourceTree = "<group>"; };
 		0E6145EA269E8ED70026255F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0E6145EC269E99880026255F /* CreatedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedListViewController.swift; sourceTree = "<group>"; };
 		0E6145EE269EA1F40026255F /* ParticipantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantListViewController.swift; sourceTree = "<group>"; };
 		0E6145F0269ED8A70026255F /* ParticipantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantDetailViewController.swift; sourceTree = "<group>"; };
-		0E6145F2269EDF2C0026255F /* CreateFormWithIncenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormWithIncenseViewController.swift; sourceTree = "<group>"; };
 		0E6145F9269F0BC30026255F /* IncenseFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncenseFormViewController.swift; sourceTree = "<group>"; };
 		0E6145FB26A13CCE0026255F /* UInavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInavigationController.swift; sourceTree = "<group>"; };
 		0E61460426A3D9980026255F /* ErrorDiscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDiscription.swift; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 				0E263F032699BB3C005BE8FE /* DeleteAccount */,
 				0E263F30269ABB04005BE8FE /* CreateForm */,
 				0E263F022699BB36005BE8FE /* Create */,
+				0E44F43426B61E4D00E83331 /* PrivacyPolicy */,
 				0E263F012699BB2E005BE8FE /* Search */,
 			);
 			path = Views;
@@ -338,6 +343,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		0E44F43426B61E4D00E83331 /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				0E44F43226B61E4600E83331 /* PolicyTitleLabel.swift */,
+				0E44F43526B61E8000E83331 /* PolicyTextView.swift */,
+			);
+			path = PrivacyPolicy;
+			sourceTree = "<group>";
+		};
 		0E61460326A3D44A0026255F /* Incense */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,7 +376,6 @@
 			children = (
 				0E263EF22699B33B005BE8FE /* CreateViewController.swift */,
 				0E263F2E269ABA8E005BE8FE /* CreateFormViewController.swift */,
-				0E6145F2269EDF2C0026255F /* CreateFormWithIncenseViewController.swift */,
 			);
 			path = CreateViewController;
 			sourceTree = "<group>";
@@ -381,6 +394,7 @@
 				0E6145EE269EA1F40026255F /* ParticipantListViewController.swift */,
 				0E61460626A424710026255F /* SearchParticipantViewController.swift */,
 				0E6145F0269ED8A70026255F /* ParticipantDetailViewController.swift */,
+				0E44F43026B2A52500E83331 /* PrivacyPolicyViewController.swift */,
 			);
 			path = MyPageViewController;
 			sourceTree = "<group>";
@@ -536,7 +550,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E263F27269AA0A1005BE8FE /* RejectionDiscription.swift in Sources */,
-				0E6145F3269EDF2C0026255F /* CreateFormWithIncenseViewController.swift in Sources */,
 				0E263F41269BFBCE005BE8FE /* AuthTextButton.swift in Sources */,
 				0E263EF72699B350005BE8FE /* LoginViewController.swift in Sources */,
 				0E263EF32699B33B005BE8FE /* CreateViewController.swift in Sources */,
@@ -574,16 +587,19 @@
 				0E263F002699B42A005BE8FE /* UIView+Extension.swift in Sources */,
 				0E263F0C2699C658005BE8FE /* ActionButton.swift in Sources */,
 				0E263EDF2699B2C0005BE8FE /* SceneDelegate.swift in Sources */,
+				0E44F43326B61E4600E83331 /* PolicyTitleLabel.swift in Sources */,
 				0E6145F1269ED8A70026255F /* ParticipantDetailViewController.swift in Sources */,
 				0E263F3D269BF5BD005BE8FE /* AuthTextField.swift in Sources */,
 				0E263F082699BBA0005BE8FE /* CommonTextField.swift in Sources */,
 				0E61462126A9025C0026255F /* Transfer.swift in Sources */,
+				0E44F43126B2A52500E83331 /* PrivacyPolicyViewController.swift in Sources */,
 				0E44F42D26AECC8D00E83331 /* DeleteAccountTitleLabel.swift in Sources */,
 				0E61461326A55BDA0026255F /* BankAccount.swift in Sources */,
 				0E61461F26A82E480026255F /* ImportantButton.swift in Sources */,
 				0E263F44269C0EFB005BE8FE /* RegisterViewModel.swift in Sources */,
 				0E6145FA269F0BC30026255F /* IncenseFormViewController.swift in Sources */,
 				0E61460526A3D9980026255F /* ErrorDiscription.swift in Sources */,
+				0E44F43626B61E8000E83331 /* PolicyTextView.swift in Sources */,
 				0E61460926A463ED0026255F /* FuncListViewController.swift in Sources */,
 				0E61461526A7E37E0026255F /* AddBankAccountViewModel.swift in Sources */,
 				0E61460F26A547E10026255F /* BankAccountViewController.swift in Sources */,

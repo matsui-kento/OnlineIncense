@@ -80,7 +80,8 @@ class MyPageViewController: UIViewController {
         privacyButton.rx.tap
             .asDriver()
             .drive() { _ in
-                
+                let policyVC = PrivacyPolicyViewController()
+                self.navigationController?.pushViewController(policyVC, animated: true)
             }
             .disposed(by: disposeBag)
         

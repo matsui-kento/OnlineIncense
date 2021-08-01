@@ -13,7 +13,7 @@ class DetailDiscriptionLabel: UILabel {
         super.init(frame: .zero)
         text = label
         font = .systemFont(ofSize: 25, weight: .semibold)
-        textColor = .black
+        textColor = .darkGray
         numberOfLines = 0
     }
     
