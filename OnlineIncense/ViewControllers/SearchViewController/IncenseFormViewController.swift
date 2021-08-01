@@ -11,8 +11,6 @@ import RxSwift
 import RxCocoa
 import PKHUD
 import Firebase
-import Alamofire
-import SwiftyJSON
 import CurlDSL
 
 protocol IncenseProtocol {
