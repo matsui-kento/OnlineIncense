@@ -21,6 +21,7 @@ class SearchViewController: UIViewController {
     private let searchTextLabel = SearchTextLabel()
     private let searchTableView = UITableView()
     var infoArray = [Info]()
+    private let padding = Padding.shared
     
     private let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
     private let prefectures = ["北海道", "青森県", "岩手県", "宮城県", "秋田県",
@@ -81,8 +82,8 @@ class SearchViewController: UIViewController {
         view.addSubview(baseStackView)
         nameTextField.anchor(height: 50)
         searchTableView.anchor(height: 1000)
-        baseStackView.anchor(top: view.topAnchor ,left: view.leftAnchor, right: view.rightAnchor, topPadding: 120, leftPadding: 25, rightPadding: 25)
-        
+        baseStackView.anchor(top: view.topAnchor ,left: view.leftAnchor, right: view.rightAnchor, topPadding: padding.top, leftPadding: padding.left, rightPadding: padding.left)
+        print(padding.screenHeight)
     }
     
     private func setupBindings() {

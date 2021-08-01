@@ -38,6 +38,7 @@ class AddBankAccountViewController: UIViewController {
     private let addButton = ActionButton(text: "追加する")
     private let errorDiscription = ErrorDiscription()
     private var user: User?
+    private let padding = Padding.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +76,7 @@ class AddBankAccountViewController: UIViewController {
         baseStackView.distribution = .fillEqually
         view.addSubview(baseStackView)
         bankAccountnameLabel.anchor(height:50)
-        baseStackView.anchor(left: view.leftAnchor, right: view.rightAnchor, centerY: view.centerYAnchor, leftPadding: 25, rightPadding: 25)
+        baseStackView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, topPadding: padding.top, leftPadding: padding.left, rightPadding: padding.right)
         
         addButton.setTitleColor(.gray, for: .disabled)
     }

@@ -49,6 +49,7 @@
 		0E44F43126B2A52500E83331 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F43026B2A52500E83331 /* PrivacyPolicyViewController.swift */; };
 		0E44F43326B61E4600E83331 /* PolicyTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F43226B61E4600E83331 /* PolicyTitleLabel.swift */; };
 		0E44F43626B61E8000E83331 /* PolicyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F43526B61E8000E83331 /* PolicyTextView.swift */; };
+		0E44F43A26B6590F00E83331 /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44F43926B6590F00E83331 /* Padding.swift */; };
 		0E6145E7269E7BC80026255F /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145E6269E7BC80026255F /* Participant.swift */; };
 		0E6145E9269E7D720026255F /* WritingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145E8269E7D720026255F /* WritingFormViewModel.swift */; };
 		0E6145EB269E8ED70026255F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6145EA269E8ED70026255F /* User.swift */; };
@@ -136,6 +137,7 @@
 		0E44F43026B2A52500E83331 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		0E44F43226B61E4600E83331 /* PolicyTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyTitleLabel.swift; sourceTree = "<group>"; };
 		0E44F43526B61E8000E83331 /* PolicyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyTextView.swift; sourceTree = "<group>"; };
+		0E44F43926B6590F00E83331 /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		0E6145E6269E7BC80026255F /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		0E6145E8269E7D720026255F /* WritingFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFormViewModel.swift; sourceTree = "<group>"; };
 		0E6145EA269E8ED70026255F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				0E263EEA2699B2C2005BE8FE /* Info.plist */,
 				0E263F3A269B3D1F005BE8FE /* GoogleService-Info.plist */,
 				0E61462226A9BB570026255F /* secret.swift */,
+				0E44F43926B6590F00E83331 /* Padding.swift */,
 			);
 			path = OnlineIncense;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				0E61461F26A82E480026255F /* ImportantButton.swift in Sources */,
 				0E263F44269C0EFB005BE8FE /* RegisterViewModel.swift in Sources */,
 				0E6145FA269F0BC30026255F /* IncenseFormViewController.swift in Sources */,
+				0E44F43A26B6590F00E83331 /* Padding.swift in Sources */,
 				0E61460526A3D9980026255F /* ErrorDiscription.swift in Sources */,
 				0E44F43626B61E8000E83331 /* PolicyTextView.swift in Sources */,
 				0E61460926A463ED0026255F /* FuncListViewController.swift in Sources */,

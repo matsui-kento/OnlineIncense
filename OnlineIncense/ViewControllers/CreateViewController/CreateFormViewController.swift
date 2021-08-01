@@ -39,6 +39,7 @@ class CreateFormViewController: UIViewController {
     var incese = false
     var search = true
     var transfer = true
+    private let padding = Padding.shared
     
     private let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
     private let prefectures = ["北海道", "青森県", "岩手県", "宮城県", "秋田県",
@@ -119,7 +120,7 @@ class CreateFormViewController: UIViewController {
         otherTextView.anchor(height: 100)
         spaceView.anchor(height: 5)
         
-        baseStackView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: scrollView.rightAnchor, leftPadding: 25, rightPadding: 25)
+        baseStackView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: scrollView.rightAnchor, bottomPadding: 100, leftPadding: 25, rightPadding: 25)
         
         createButton.setTitleColor(.gray, for: .disabled)
     }

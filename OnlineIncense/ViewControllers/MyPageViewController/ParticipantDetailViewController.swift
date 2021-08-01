@@ -8,6 +8,7 @@
 import UIKit
 
 class ParticipantDetailViewController: UIViewController {
+    private let padding = Padding.shared
     private let nameLabel = CommonTitleLabel(label: "名前")
     private let addressLabel = CommonTitleLabel(label: "住所")
     private let numberLabel = CommonTitleLabel(label: "電話番号")
@@ -51,7 +52,7 @@ class ParticipantDetailViewController: UIViewController {
         baseStackView.spacing = 20
         
         view.addSubview(baseStackView)
-        baseStackView.anchor(top: view.topAnchor ,left: view.leftAnchor, right: view.rightAnchor, topPadding: 120, leftPadding: 25, rightPadding: 25)
+        baseStackView.anchor(top: view.topAnchor ,left: view.leftAnchor, right: view.rightAnchor, topPadding: padding.top, leftPadding: padding.left, rightPadding: padding.right)
         
         
     }
