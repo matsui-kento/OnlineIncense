@@ -361,9 +361,6 @@ PODS:
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
-  - SDWebImage (5.11.1):
-    - SDWebImage/Core (= 5.11.1)
-  - SDWebImage/Core (5.11.1)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -373,7 +370,6 @@ DEPENDENCIES:
   - PKHUD
   - RxCocoa
   - RxSwift
-  - SDWebImage
 
 SPEC REPOS:
   trunk:
@@ -400,7 +396,6 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
-    - SDWebImage
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -426,8 +421,7 @@ SPEC CHECKSUMS:
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
-  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: 9dc2061607c8048299086576cfa2e9060dda3dcc
+PODFILE CHECKSUM: 26b7f319c5897ae523f4ea7eb7607258ca3296a7
 
 COCOAPODS: 1.10.1
