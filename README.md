@@ -4,17 +4,17 @@
 ## 主な機能
 
 ### 芳名録を作成する
-動画を貼る
+https://user-images.githubusercontent.com/69304437/135074143-f13fd4d1-76a2-4103-8d08-3dd83771c528.mp4
 
 ---
 
-### 香典を贈る
-動画を貼る
+### 検索する → 香典を贈る
+https://user-images.githubusercontent.com/69304437/135074114-eca40932-4e1c-48cb-9e27-2de8b5b16ada.mp4
 
 ---
 
-### 参列者を確認する
-動画を貼る
+### 参列者を確認する → 香典ありと香典なしで絞り込む
+https://user-images.githubusercontent.com/69304437/135074097-4b71c164-14a6-4886-b684-d1147be7a04d.mp4
 
 ---
 
