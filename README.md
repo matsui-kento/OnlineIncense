@@ -1,6 +1,8 @@
 # オンライン香典(OnlineIncense)
 芳名録の記入、香典の送付ができるアプリです。
 
+言語はSwift、サーバーはFirebase、決済サービスは[Omise](https://www.omise.co/)を利用して開発しました。
+
 ## 主な機能
 
 ### 芳名録を作成する
