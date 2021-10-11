@@ -38,20 +38,20 @@ https://user-images.githubusercontent.com/69304437/135074097-4b71c164-14a6-4886-
 ## 利用しているライブラリ
 
 ### CococaPods
-・[Firebase/Auth](https://github.com/firebase/firebase-ios-sdk)
+- [Firebase/Auth](https://github.com/firebase/firebase-ios-sdk)
 
-・[Firebase/Firestore](https://github.com/firebase/firebase-ios-sdk)
+- [Firebase/Firestore](https://github.com/firebase/firebase-ios-sdk)
 
-・[Firebase/Storage](https://github.com/firebase/firebase-ios-sdk)
+- [Firebase/Storage](https://github.com/firebase/firebase-ios-sdk)
 
-・[PKHUD](https://github.com/pkluz/PKHUD)
+- [PKHUD](https://github.com/pkluz/PKHUD)
 
-・[RxSwift](https://github.com/ReactiveX/RxSwift)
+- [RxSwift](https://github.com/ReactiveX/RxSwift)
 
-・[RxCocoa](https://github.com/ReactiveX/RxSwift)
+- [RxCocoa](https://github.com/ReactiveX/RxSwift)
 
 ### Swift Package Manager
 
-・[Omise SDK](https://github.com/omise/omise-ios.git)
+- [Omise SDK](https://github.com/omise/omise-ios.git)
 
-・[CurlDSL](https://github.com/zonble/CurlDSL)
+- [CurlDSL](https://github.com/zonble/CurlDSL)
