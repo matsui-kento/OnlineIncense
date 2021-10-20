@@ -5,22 +5,25 @@
 
 しかし、決済サービス(Omise)から本番で利用するなら法人としか契約できないと言われ、合同会社を設立しました。
 
-その後、アドバイスをもらっているエンジニアから「このサービスは資金移動業の許可がないとリリースは厳しい」と助言され、リリースを断念するもしくは、一部の機能のみでリリースしようとしています。
+その後、アドバイスをもらっているエンジニアから「このサービスは資金移動業の登録がないとリリースは厳しい」と助言され、リリースを断念するもしくは、一部の機能のみでリリースしようとしています。
 
 ## 主な機能
 
 ### 芳名録を作成する
-https://user-images.githubusercontent.com/69304437/135074143-f13fd4d1-76a2-4103-8d08-3dd83771c528.mp4
+
+https://user-images.githubusercontent.com/69304437/138033981-85dd465b-cb1b-4ff9-b075-909caeb8217a.mp4
 
 ---
 
 ### 検索する → 香典を贈る
-https://user-images.githubusercontent.com/69304437/135074114-eca40932-4e1c-48cb-9e27-2de8b5b16ada.mp4
+
+https://user-images.githubusercontent.com/69304437/138034002-8dd1d920-c8ff-4b0f-83cb-9a5f97d4e728.mp4
 
 ---
 
 ### 参列者を確認する → 香典ありと香典なしで絞り込む
-https://user-images.githubusercontent.com/69304437/135074097-4b71c164-14a6-4886-b684-d1147be7a04d.mp4
+
+https://user-images.githubusercontent.com/69304437/138034019-a822e43b-61ea-40c9-912b-c16206564e8b.mp4
 
 ---
 
